@@ -1,0 +1,33 @@
+h2 =t('goods.index.title')
+.container
+  .row
+    .col-md-10
+      .panel.panel-default
+        .panel-heading
+          .row
+            .col-md-6 =t('goods.index.title')
+            .col-md-2.pull-right 
+              a.btn href= new_admin_good_path 
+                i.glyphicon-plus 
+                =t('goods.index.buttons.new')
+
+      table.table
+        thead
+          tr
+            th =t('goods.index.table.id')
+            th =t('goods.index.table.name')
+            th =t('goods.index.table.cost')
+            th =t('goods.index.table.actions')
+        tbody
+          -@goods.each do |good|
+            tr
+              th =link_to good.id, admin_good_path(good)
+              th =good.name
+              th = '%.2f' % good.cost.to_f
+              th 
+                a.btn href= edit_admin_good_path(good)
+                  i.icon-pencil
+                  =t('doogs.index.buttons.edit')
+                a.btn href= admin_good_path(good) data-method='delete'
+                  i.icon-trash
+                  =t('goods.index.buttons.delete')

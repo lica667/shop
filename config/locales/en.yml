@@ -21,3 +21,17 @@
 
 en:
   hello: "Hello world"
+  goods:
+    index:
+      title: "Goods"
+      table:
+        id: "ID"
+        name: "Name"
+        cost: "Cost"
+        actions: "Actions"
+      buttons:
+        edit: "Edit"
+        delete: "Delete"
+        new: "New good"
+    form:
+      new: "New good"
