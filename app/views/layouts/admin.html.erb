@@ -6,9 +6,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-       <p class="notice"><%= notice %></p>
+  <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-<%= yield %>
+  <div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <%= link_to "Shop", root_path, html_options = {class:"navbar-brand"}%>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <li><%= link_to t('goods.index.title'), admin_goods_path  %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+	<%= yield %>
 
 </body>
