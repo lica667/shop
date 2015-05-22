@@ -35,3 +35,8 @@ en:
         new: "New good"
     form:
       new: "New good"
+
+  # controllers
+  controllers:
+    goods:
+      successfully_saved: "Good saved successfully!"

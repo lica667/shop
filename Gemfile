@@ -32,6 +32,7 @@ gem 'devise'
 gem 'rb-readline'
 gem 'pry-rails'
 gem 'formtastic', '~> 3.0'
+gem 'formtastic-bootstrap'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

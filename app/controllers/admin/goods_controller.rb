@@ -10,6 +10,16 @@ class Admin::GoodsController < AdminController
   end
 
   def create
+    @good = Good.new(good_params)
+    respond_to do |format|
+      if @good.save
+        format.html { redirect_to admin_goods_url, notice: t('controllers.goods.successfully_created') }
+        format.json { render action: 'index', status: :created, location: @good }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @good.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show

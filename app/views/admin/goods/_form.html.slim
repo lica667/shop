@@ -1,7 +1,9 @@
-= semantic_form_for @good do |f|
-  = f.inputs do
-    = f.input :name
-    = f.input :description
-    = f.input :cost
-  = f.buttons do
-    = f.commit_button
+.input-group
+  = semantic_form_for @good, :url => admin_goods_path do |f|
+    = f.inputs do
+      = f.input :name
+      = f.input :description, :as => :text, :input_html => { :rows => 10, :cols => 20 }
+      = f.input :cost
+    p
+    = f.actions do
+      = f.action :submit, :as => :button
