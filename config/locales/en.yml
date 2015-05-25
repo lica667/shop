@@ -21,6 +21,9 @@
 
 en:
   hello: "Hello world"
+  buttons:
+    back: "Back"
+    edit: "Edit"
   goods:
     index:
       title: "Goods"
@@ -35,8 +38,26 @@ en:
         new: "New good"
     form:
       new: "New good"
+      edit: "Edit good"
+    show:
+      name: "Name:"
+      description: "Description:"
+      cost: "Cost:"
+      created_at: "Created:"
+      updated_at: "Last updated:"
+  categories:
+    index:
+      title: "Categories"
+      buttons:
+        new: "New category"
 
   # controllers
   controllers:
     goods:
-      successfully_saved: "Good saved successfully!"
+      successfully_created: "Good successfully created!"
+      successfully_destroyed: "Good successfully destroyed!"
+      successfully_updated: "Good successfully updated!"
+    categories:
+      successfully_created: "Category successfully created!"
+      successfully_destroyed: "Category successfully destroyed!"
+      successfully_updated: "Category successfully updated!"

@@ -6,18 +6,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
+  
   <div class="navbar navbar-default navbar-static-top">
     <div class="container">
       <%= link_to "Shop", root_path, html_options = {class:"navbar-brand"}%>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
           <li><%= link_to t('goods.index.title'), admin_goods_path  %></li>
+          <li><%= link_to t('categories.index.title'), admin_categories_path  %></li>
         </ul>
       </div>
     </div>
+  </div>
+
+  <!-- show alert or notice -->
+  <div class='container-fluid'>
+    <% if notice %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% elsif alert %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
   </div>
 
 	<%= yield %>

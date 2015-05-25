@@ -1,0 +1,16 @@
+p
+.container
+  .row
+    .col-md-10
+      .panel.panel-default
+        .panel-heading
+          .row
+            .col-md-6 =t('categories.index.title')
+            .col-md-2.pull-right 
+              a.btn href= new_admin_category_path 
+                i.glyphicon-plus 
+                =t('categories.index.buttons.new')
+
+    .show-container
+      - @categories.each do |category|
+        h3 = category.name

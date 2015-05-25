@@ -1,0 +1,32 @@
+p
+.container.show-container
+  table.table.table-hover
+    thead
+      tr
+        th
+        th
+    tbody
+      tr
+        th =t('goods.show.name')
+        th = @good.name.to_s
+      tr
+        th = t('goods.show.description')
+        th = @good.description.to_s
+      tr
+        th = t('goods.show.cost')
+        th = '%.2f' % @good.cost
+      tr
+        th = t('goods.show.created_at')
+        th = @good.created_at.to_date
+      tr
+        th = t('goods.show.updated_at')
+        th = @good.updated_at.to_date
+  .btn-group role="group" aria-label="Buttons"
+    a.btn href=admin_goods_path 
+      i.icon-chevron-left
+      = t('buttons.back')
+    a.btn href= edit_admin_good_path(@good) 
+      i.icon-pencil
+      = t('buttons.edit')
+  p
+
