@@ -1,9 +1,16 @@
 class Admin::CategoriesController < AdminController
+  require 'category_presenter'
   
   before_filter :get_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.all
+    root_categories = Array.new()
+    Category.root.each { |c| root_categories <<  CategoryPresenter.new(c).present}
+    respond_to do |format|
+      format.html { render action: 'index' }
+      format.json { render json: { categories: root_categories } }
+    end
+    
   end
 
   def new
