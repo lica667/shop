@@ -10,5 +10,31 @@ p
               a.btn href= new_admin_category_path 
                 i.glyphicon-plus 
                 =t('categories.index.buttons.new')
-
-    .show-container
+      table.table.table-hover
+        thead
+          tr
+            th =t('categories.index.table.id')
+            th =t('categories.index.table.name')
+            th =t('categories.index.table.belongs_to_category')
+            th =t('categories.index.table.subcategories')
+            th =t('categories.index.table.actions')
+        tbody
+          -@categories.each do |cat|
+            tr
+              th =link_to cat.id, admin_category_path(cat)
+              th =cat.name
+              th =cat.category ? cat.category.name : "-"
+              th 
+                -if !cat.categories.empty?
+                  -cat.categories.each do |c|
+                    .
+                      =link_to c.name, admin_category_path(c) 
+                -else
+                  = "-"
+              th 
+                a.btn href= edit_admin_category_path(cat)
+                  i.icon-pencil
+                  =t('buttons.edit')
+                a.btn href= admin_category_path(cat) data-method='delete'
+                  i.icon-trash
+                  =t('buttons.delete')

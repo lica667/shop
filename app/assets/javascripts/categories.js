@@ -24,7 +24,9 @@ function getCategories(){
 function returnCategoriesTree(categories, path){
   path = path || '|';
   console.log(categories["categories"].length);
-  $.each( categories["categories"], function(index, value){
-    console.log( path + ' ' + value["name"] );
-  });
+  // if (categories["categories"].length > 0) {
+  //   $.each( categories["categories"], function(index, value){
+  //     console.log( path + ' ' + value["name"] );
+  //   });
+  // };
 }

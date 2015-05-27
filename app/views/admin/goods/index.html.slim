@@ -11,12 +11,13 @@ p
                 i.glyphicon-plus 
                 =t('goods.index.buttons.new')
 
-      table.table
+      table.table.table-hover
         thead
           tr
             th =t('goods.index.table.id')
             th =t('goods.index.table.name')
             th =t('goods.index.table.cost')
+            th =t('goods.index.table.categories')
             th =t('goods.index.table.actions')
         tbody
           -@goods.each do |good|
@@ -25,9 +26,16 @@ p
               th =good.name
               th = '%.2f' % good.cost.to_f
               th 
+                -if !good.categories.empty?
+                  -good.categories.each do |c|
+                    .
+                      =link_to c.name, admin_category_path(c) 
+                -else
+                  = "-"
+              th 
                 a.btn href= edit_admin_good_path(good)
                   i.icon-pencil
-                  =t('doogs.index.buttons.edit')
+                  =t('buttons.edit')
                 a.btn href= admin_good_path(good) data-method='delete'
                   i.icon-trash
-                  =t('goods.index.buttons.delete')
+                  =t('buttons.delete')

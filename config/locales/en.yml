@@ -24,6 +24,7 @@ en:
   buttons:
     back: "Back"
     edit: "Edit"
+    delete: "Delete"
   goods:
     index:
       title: "Goods"
@@ -31,10 +32,9 @@ en:
         id: "ID"
         name: "Name"
         cost: "Cost"
+        categories: "Categories"
         actions: "Actions"
       buttons:
-        edit: "Edit"
-        delete: "Delete"
         new: "New good"
     form:
       new: "New good"
@@ -50,6 +50,22 @@ en:
       title: "Categories"
       buttons:
         new: "New category"
+      table:
+        id: "ID"
+        name: "Name"
+        belongs_to_category: "Belongs to category"
+        subcategories: "Subcategories" 
+        actions: "Actions"
+    form:
+      new: "New category"
+      edit: "Edit category"
+      category: "Belongs to category:"
+    show:
+      name: "Name:"
+      belongs_to_category: "Belongs to category:"
+      subcategories: "Subcategories:" 
+      created_at: "Created:"
+      updated_at: "Last updated:"
 
   # controllers
   controllers:

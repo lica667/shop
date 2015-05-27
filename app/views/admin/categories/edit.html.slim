@@ -1,7 +1,7 @@
 .container 
-  h2 =t('categories.form.new')
+  h2 =t('categories.form.edit')
   .input-group
-    = semantic_form_for @category, :url => admin_categories_path do |f|
+    = semantic_form_for @category, :url => admin_category_path do |f|
       = f.inputs do
         = f.input :name
         = f.input :category_id,  :as => :select, :label=> t('categories.form.category'), :collection => Category.all.map{|c| [c.name, c.id]}  

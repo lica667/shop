@@ -1,0 +1,35 @@
+p
+.container.show-container
+  table.table.table-hover
+    thead
+      tr
+        th
+        th
+    tbody
+      tr
+        th =t('categories.show.name')
+        th = @category.name.to_s
+      tr
+        th =t('categories.show.belongs_to_category')
+        th = @category.category.try(:name)
+      tr
+        th =t('categories.show.subcategories')
+        th
+          -@category.categories.try(:each) do |c|
+            . = link_to c.name, admin_category_path(c)
+      tr
+        th =t('categories.show.created_at')
+        th = @category.created_at.to_date
+      tr
+        th =t('categories.show.updated_at')
+        th = @category.updated_at.to_date
+      
+  .btn-group role="group" aria-label="Buttons"
+    a.btn href=admin_categories_path 
+      i.icon-chevron-left
+      = t('buttons.back')
+    a.btn href= edit_admin_category_path(@category) 
+      i.icon-pencil
+      = t('buttons.edit')
+  p
+

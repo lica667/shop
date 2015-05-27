@@ -6,6 +6,7 @@
         = f.input :name
         = f.input :description, :as => :text, :input_html => { :rows => 10, :cols => 20 }
         = f.input :cost
+        = f.input :categories, :as => :check_boxes
       p
       = f.actions do
         = f.action :submit, :as => :button

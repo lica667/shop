@@ -6,6 +6,7 @@ class Admin::CategoriesController < AdminController
   def index
     root_categories = Array.new()
     Category.root.each { |c| root_categories <<  CategoryPresenter.new(c).present}
+    @categories = Category.all
     respond_to do |format|
       format.html { render action: 'index' }
       format.json { render json: { categories: root_categories } }
@@ -31,19 +32,29 @@ class Admin::CategoriesController < AdminController
   end
 
   def show
-    
   end
 
   def edit
-    
   end
 
   def update
-    
+    respond_to do |format|
+      if @category.update_attributes(category_params)
+        format.html { redirect_to admin_categories_url, alert: t('controllers.categories.successfully_updated') }
+        format.json { render action: 'index', status: :created, location: @category }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @category.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
-    
+    category.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_categories_url, notice: t('controllers.categories.successfully_destroyed') }
+      format.json { head :no_content }
+    end
   end
 
   protected
@@ -54,5 +65,9 @@ class Admin::CategoriesController < AdminController
 
   def get_category
     @category = Category.find_by(id: params[:id])
+  end
+
+  def category_params
+    params.require(:category).permit(:name, :category_id)
   end
 end
