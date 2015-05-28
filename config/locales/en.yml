@@ -66,6 +66,14 @@ en:
       subcategories: "Subcategories:" 
       created_at: "Created:"
       updated_at: "Last updated:"
+  users:
+    index:
+      title: "Users"
+    show:
+      email: "Email:"
+    form:
+      edit: "Edit user"
+
 
   # controllers
   controllers:

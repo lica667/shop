@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminController
   
-  before_filter :get_user, only: [:edit, :update, :show, :diactivate, :activate]
+  before_filter :get_user, only: [:edit, :update, :show, :diactivate, :activate, :destroy]
 
   def index
     @users = User.all    
@@ -16,7 +16,7 @@ class Admin::UsersController < AdminController
     
   end
 
-  def delete
+  def destroy
 
   end
 

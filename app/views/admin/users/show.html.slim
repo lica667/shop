@@ -1,0 +1,20 @@
+p
+.container.show-container
+  table.table.table-hover
+    thead
+      tr
+        th
+        th
+    tbody
+      tr
+        th =t('users.show.email')
+        th = @user.email.to_s
+  .btn-group role="group" aria-label="Buttons"
+    a.btn href=admin_users_path 
+      i.icon-chevron-left
+      = t('buttons.back')
+    a.btn href= edit_admin_user_path(@user) 
+      i.icon-pencil
+      = t('buttons.edit')
+  p
+

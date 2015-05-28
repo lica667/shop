@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     resources :goods
     resources :categories
     resources :users do
-
+      collection do
+        get 'diactivate'
+        get 'activate'
+      end
     end
   end
   resources :goods
