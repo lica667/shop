@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :goods
     resources :categories
+    resources :users do
+
+    end
   end
   resources :goods
   
