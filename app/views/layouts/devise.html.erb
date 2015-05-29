@@ -10,13 +10,6 @@
   <div class="navbar navbar-default navbar-static-top">
     <div class="container">
       <%= link_to "Shop", admin_index_path, html_options = {class:"navbar-brand"}%>
-      <div class="navbar-collapse collapse navbar-responsive-collapse">
-        <ul class="nav navbar-nav">
-          <li><%= link_to t('goods.index.title'), admin_goods_path  %></li>
-          <li><%= link_to t('categories.index.title'), admin_categories_path  %></li>
-          <li><%= link_to t('users.index.title'), admin_users_path  %></li>
-        </ul>
-      </div>
     </div>
   </div>
 
@@ -35,6 +28,8 @@
     <% end %>
   </div>
 
-	<%= yield %>
+  <div class='container'>
+    <%= yield %>
+  </div>
 
 </body>

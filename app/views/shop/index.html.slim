@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-md-9
+      .row
+        -@goods.try(:each) do |good|
+          .col-md-4
+            .product
+              a href=good_path(good)
+                <!-- img  src="products/dress1home.jpg" -->
+            .name
+              a href=good_path(good) 
+                =good.name
+            .price
+              p = '%.2f' % good.cost.to_f

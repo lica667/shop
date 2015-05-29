@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  # get 'shop/index'
+
   devise_for :users
   devise_for :admin
-  root to: "admin#index"
+  root to: "shop#index"
 
   resources :admin, only: :index
   namespace :admin do

@@ -1,0 +1,10 @@
+.container 
+  h2 =t('users.form.edit')
+  .input-group
+    = semantic_form_for @user, :url => admin_user_path do |f|
+      = f.inputs do
+        = f.input :email
+        = f.input :temp_password
+      p
+      = f.actions do
+        = f.action :submit, :as => :button

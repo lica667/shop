@@ -21,6 +21,7 @@
 
 en:
   hello: "Hello world"
+  log_out: "Log out"
   buttons:
     back: "Back"
     edit: "Edit"
@@ -73,6 +74,11 @@ en:
       email: "Email:"
     form:
       edit: "Edit user"
+  photos:
+    form:
+      title: "Photos"
+      add_photo: "Add photo"
+      remove_photo: "Remove photo"
 
 
   # controllers
@@ -85,3 +91,6 @@ en:
       successfully_created: "Category successfully created!"
       successfully_destroyed: "Category successfully destroyed!"
       successfully_updated: "Category successfully updated!"
+    users:
+      successfully_updated: "User successfully updated"
+      successfully_destroyed: "User successfully destroyed"

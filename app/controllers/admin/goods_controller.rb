@@ -59,6 +59,6 @@ class Admin::GoodsController < AdminController
   end
 
   def good_params
-    params.require(:good).permit( :name, :description, :cost, category_ids: [] )
+    params.require(:good).permit( :name, :description, :cost, category_ids: [], photo_attributes: [:id, :avatar, :description, :_destroy] )
   end
 end

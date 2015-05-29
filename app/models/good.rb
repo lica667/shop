@@ -6,4 +6,6 @@ class Good < ActiveRecord::Base
 
   has_many :good_categories
   has_many :categories, through: :good_categories
+  has_many :photos
+  accepts_nested_attributes_for :photos, :reject_if => :all_blank, :allow_destroy => true
 end
