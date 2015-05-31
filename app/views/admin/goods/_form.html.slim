@@ -4,6 +4,10 @@
       = f.input :name
       = f.input :description, :as => :text, :input_html => { :rows => 10, :cols => 20 }
       = f.input :cost
+       = f.semantic_fields_for :photos do |photo|
+        = render 'photo_fields', :f => photo
+      .links
+        = link_to_add_association t('photos.form.add_photo'), f, :photos
     p
     = f.actions do
       = f.action :submit, :as => :button

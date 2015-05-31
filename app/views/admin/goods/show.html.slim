@@ -21,6 +21,11 @@ p
       tr
         th = t('goods.show.updated_at')
         th = @good.updated_at.to_date
+      - @good.photos.try(:each) do |photo|
+        tr
+          th = t('goods.show.photo')
+          th = photo.description
+          th = image_tag(photo.avatar.url(:medium))
   .btn-group role="group" aria-label="Buttons"
     a.btn href=admin_goods_path 
       i.icon-chevron-left

@@ -2,6 +2,4 @@
   = f.inputs do
     = f.input :avatar, :as => :file
     = f.input :description
-    %li
-      = label_tag ''
-      = link_to_remove_association t('photos.form.remove_photo'), f
+    = link_to_remove_association t('photos.form.remove_photo'), f

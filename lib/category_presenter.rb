@@ -6,7 +6,8 @@ class CategoryPresenter
 
   def present
     hash = {
-      name: @category.name.to_s
+      name: @category.name.to_s,
+      id: @category.id
     }
     if !@category.categories.empty?
       hash[:categories] = Array.new()

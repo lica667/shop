@@ -15,6 +15,7 @@ p
         thead
           tr
             th =t('goods.index.table.id')
+            th
             th =t('goods.index.table.name')
             th =t('goods.index.table.cost')
             th =t('goods.index.table.categories')
@@ -23,6 +24,7 @@ p
           -@goods.each do |good|
             tr
               th =link_to good.id, admin_good_path(good)
+              th =image_tag(good.photos.first.avatar.url(:small)) unless good.photos.empty?
               th =good.name
               th = '%.2f' % good.cost.to_f
               th 

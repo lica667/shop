@@ -46,6 +46,7 @@ en:
       cost: "Cost:"
       created_at: "Created:"
       updated_at: "Last updated:"
+      photo: "Photo:"
   categories:
     index:
       title: "Categories"

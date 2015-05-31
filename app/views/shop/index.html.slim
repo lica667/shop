@@ -1,12 +1,15 @@
 .container
   .row
+    .col-md-3.left-menu
+      .
+        ul#categories
     .col-md-9
       .row
         -@goods.try(:each) do |good|
           .col-md-4
             .product
               a href=good_path(good)
-                <!-- img  src="products/dress1home.jpg" -->
+                = image_tag (good.photos.first.avatar.url) unless good.photos.empty?
             .name
               a href=good_path(good) 
                 =good.name

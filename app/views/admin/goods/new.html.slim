@@ -8,10 +8,10 @@
         = f.input :cost
         = f.input :categories, :as => :check_boxes
         h3 =t('photos.form.title') 
-          = f.semantic_fields_for :photos do |photo|
-            = render 'photo_fields', :f => photo
-          .links
-            = link_to_add_association t('photos.form.add_photo'), f, :photos
+        = f.semantic_fields_for :photos do |photo|
+          = render 'photo_fields', :f => photo
+        button.btn
+          = link_to_add_association t('photos.form.add_photo'), f, :photos
       p
       = f.actions do
         = f.action :submit, :as => :button
