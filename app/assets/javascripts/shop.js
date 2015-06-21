@@ -9,12 +9,14 @@
 $(document).on('page:load', function() {
 
   getCategories();
+  setSlides();
 
 });
 
 $(window).load(function(){
 
   getCategories();
+  setSlides();
   
 });
 
@@ -24,10 +26,18 @@ function getCategories(){
   $.getJSON('/admin/categories.json', function(json){
 
     // console.log(returnCategoriesTree(json));
+    $('#categories').children().remove();
     returnCategoriesTree(json['categories'], 'categories');
   });
 
 
+};
+function setSlides(){
+  $("#slides").slidesjs({
+    width: 940,
+    height: 528,
+    navigation: false
+  });
 };
 
 function returnCategoriesTree(categories, id){
@@ -38,7 +48,7 @@ function returnCategoriesTree(categories, id){
   if (Array.isArray(categories)){
     $.each( categories , function(index, value){
       $('#'+id).append("<li><a href = '/category?id="+value['id']+"'>" + value["name"] + "</a></li>")
-      console.log('id:' +id+ ' |name: ' + value["name"]);
+      // console.log('id:' +id+ ' |name: ' + value["name"]);
       if (value['categories']) {
         $('#'+id).append("<ul id="+value["id"]+"></ul>")
         returnCategoriesTree(value['categories'], value["id"]);
