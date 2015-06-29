@@ -1,0 +1,28 @@
+.row.product-info
+  .col-md-6
+          
+    .image
+      a = image_tag (@good.photos.first.avatar.url) unless @good.photos.empty?
+
+    - if @good.photos.count > 1
+      .image-additional
+        -@good.photos.each do |photo|
+          a = image_tag (photo.avatar.url)
+
+  .col-md-6
+    h1 =@good.name
+    .line
+    ul
+      li 
+        span Availability: In Stock
+    .price
+      Price 
+        strong = '$' + '%.2f' % @good.cost.to_f
+          
+    .tabs
+      ul.nav.nav-tabs#myTab
+        li.active
+          a href="" Description
+      .tab-content
+        .tab-pane.active#home
+          = @good.description.to_s

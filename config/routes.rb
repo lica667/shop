@@ -17,8 +17,11 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :goods
   get '/category', to: 'shop#category'
+  get '/goods/:id', to: 'shop#show'
+  get '/categories', to: 'shop#categories'
+
+  resources :goods
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

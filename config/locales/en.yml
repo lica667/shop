@@ -35,6 +35,7 @@ en:
         cost: "Cost"
         categories: "Categories"
         actions: "Actions"
+        availability: "Availability"
       buttons:
         new: "New good"
     form:

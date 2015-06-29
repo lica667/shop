@@ -3,6 +3,7 @@
   .input-group
     = semantic_form_for @good, :url => admin_good_path do |f|
       = f.inputs do
+        = f.input :is_available, :label => ""
         = f.input :name
         = f.input :description, :as => :text, :input_html => { :rows => 10, :cols => 20 }
         = f.input :cost

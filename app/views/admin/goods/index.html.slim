@@ -19,6 +19,7 @@ p
             th =t('goods.index.table.name')
             th =t('goods.index.table.cost')
             th =t('goods.index.table.categories')
+            th =t('goods.index.table.availability')
             th =t('goods.index.table.actions')
         tbody
           -@goods.each do |good|
@@ -34,6 +35,7 @@ p
                       =link_to c.name, admin_category_path(c) 
                 -else
                   = "-"
+              th =good.is_available?                
               th 
                 a.btn href= edit_admin_good_path(good)
                   i.icon-pencil

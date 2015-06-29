@@ -23,7 +23,7 @@ $(window).load(function(){
 function getCategories(){
 
 
-  $.getJSON('/admin/categories.json', function(json){
+  $.getJSON('/categories.json', function(json){
 
     // console.log(returnCategoriesTree(json));
     $('#categories').children().remove();
