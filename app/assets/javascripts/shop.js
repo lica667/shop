@@ -45,7 +45,7 @@ function returnCategoriesTree(categories, id){
   // el = $('#'+id);
   // console.log(id);
 
-  if (Array.isArray(categories)){
+  // if (Array.isArray(categories)){
     $.each( categories , function(index, value){
       $('#'+id).append("<li><a href = '/category?id="+value['id']+"'>" + value["name"] + "</a></li>")
       // console.log('id:' +id+ ' |name: ' + value["name"]);
@@ -54,13 +54,6 @@ function returnCategoriesTree(categories, id){
         returnCategoriesTree(value['categories'], value["id"]);
       }
     });
-  } else {
-    $('#'+id).append("<li><a href = '/category?id="+value['id']+"'>" + value["name"] + "</a></li>")
-      console.log('id:' +id+ ' |name: ' + value["name"]);
-    if (value['categories']) {
-      $('#'+id).append("<ul id="+value["id"]+"></ul>")
-      returnCategoriesTree(value['categories'], value["id"]);
-    }
-  }
+  // }
   // return categories['categories']
 };

@@ -7,7 +7,7 @@
     - if @good.photos.count > 1
       .image-additional
         -@good.photos.each do |photo|
-          a = image_tag (photo.avatar.url)
+          a = image_tag (photo.avatar.url(:medium))
 
   .col-md-6
     h1 =@good.name
@@ -25,4 +25,4 @@
           a href="" Description
       .tab-content
         .tab-pane.active#home
-          = @good.description.to_s
+          = simple_format @good.description

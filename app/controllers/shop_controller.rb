@@ -16,10 +16,8 @@ class ShopController < ApplicationController
   end
 
   def categories
-    root_categories = Array.new()
-    Category.root.each { |c| root_categories <<  CategoryPresenter.new(c).present}
     respond_to do |format|
-      format.json { render json: { categories: root_categories } }
+      format.json { render json: { categories: Category.category_presenter } }
     end
   end
 end
