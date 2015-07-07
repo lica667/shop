@@ -16,17 +16,27 @@ class Category < ActiveRecord::Base
     root_categories
   end
 
-  def all_with_parents(categories, str = "")
+  def self.all_with_parents
     hash = Hash.new()
-    categories.each do |cat|
-      hash[cat.id] = "#{cat.name} | #{str}"
-      puts "id: #{cat.id} | name: #{cat.name} | hash: #{hash}"
+    Category.root.each do |cat|
+      hash[cat.id] = {"name" => cat.name}
+      puts "id: #{cat.id} | hash: #{hash}"
       if !cat.categories.empty?
-        cat.all_with_parents(cat.categories, cat.name)
+        Category.subcategories_with_breadcrumb(cat.categories, hash[cat.id]["name"], hash)
+        # str = str.empty? ? "#{cat.name}" : " #{cat.name} +++ #{str} "
+        # str += "* #{cat.name} * " " #{cat.name} +++ #{str} "
+        # cat.categories.each {|c| c.all_with_parents(cat.categories, str) }
       # else
-      #   puts "LAST ELEMENT"
-      #   hash[cat.id] += "#{cat.name}   "
+      #   str = ""
       end
+    end
+    return hash
+  end
+
+  def self.subcategories_with_breadcrumb(categories, path, hash)
+    categories.each do |cat|
+      hash[cat.id] = {"name" => cat.name, "breadcrumb" => path}
+      Category.subcategories_with_breadcrumb(cat.categories, "#{hash[cat.id]['name']} | #{hash[cat.id]['breadcrumb']}", hash) unless cat.categories.empty?
     end
     return hash
   end
