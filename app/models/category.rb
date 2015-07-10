@@ -20,18 +20,21 @@ class Category < ActiveRecord::Base
     hash = Hash.new()
     Category.root.each do |cat|
       hash[cat.id] = {"name" => cat.name}
-      puts "id: #{cat.id} | hash: #{hash}"
-      if !cat.categories.empty?
-        Category.subcategories_with_breadcrumb(cat.categories, hash[cat.id]["name"], hash)
-        # str = str.empty? ? "#{cat.name}" : " #{cat.name} +++ #{str} "
-        # str += "* #{cat.name} * " " #{cat.name} +++ #{str} "
-        # cat.categories.each {|c| c.all_with_parents(cat.categories, str) }
-      # else
-      #   str = ""
-      end
+      Category.subcategories_with_breadcrumb(cat.categories, hash[cat.id]["name"], hash) unless cat.categories.empty?
     end
     return hash
   end
+
+  def self.print_categories_with_breadcrumb(good=nil)
+    # .map{|c| c << {:checked=>true}}
+    if good
+      Category.all_with_parents.map{|c| ["#{c.last['name']} #{">>> #{c.last['breadcrumb']}" unless c.last['breadcrumb'].nil?}", c.first, :checked => good.category_ids.include?(c.first)]}
+    else
+      Category.all_with_parents.map{|c| ["#{c.last['name']} #{">>> #{c.last['breadcrumb']}" unless c.last['breadcrumb'].nil?}", c.first]}
+    end
+  end
+
+  private
 
   def self.subcategories_with_breadcrumb(categories, path, hash)
     categories.each do |cat|

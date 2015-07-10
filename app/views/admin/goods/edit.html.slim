@@ -6,8 +6,8 @@
         = f.input :is_available, :label => ""
         = f.input :name
         = f.input :description, :as => :text, :input_html => { :rows => 10, :cols => 20 }
-        = f.input :cost
-        = f.input :categories, :as => :check_boxes
+        = f.input :cost_usd
+        = f.input :categories, :as => :check_boxes, :collection => Category.print_categories_with_breadcrumb(@good)
         h3 =t('photos.form.title') 
         = f.semantic_fields_for :photos do |photo|
           = render 'photo_fields', :f => photo

@@ -1,6 +1,8 @@
 class Good < ActiveRecord::Base
-  validates_presence_of :cost
-  validates :cost, numericality: { greater_than_or_equal_to: 0.01, message: "Can't believe in this cost" }
+  validates_presence_of :cost_usd, :cost_eur, :cost_bur
+  validates :cost_usd, numericality: { greater_than_or_equal_to: 0.01, message: "Can't believe in this cost" }
+  validates :cost_eur, numericality: { greater_than_or_equal_to: 0.01, message: "Can't believe in this cost" }
+  validates :cost_bur, numericality: { greater_than_or_equal_to: 0.01, message: "Can't believe in this cost" }
   validates_presence_of :name
   validates_presence_of :description
 
