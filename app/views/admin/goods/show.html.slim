@@ -14,7 +14,12 @@ p
         th = @good.description.to_s
       tr
         th = t('goods.show.cost')
-        th = '%.2f' % @good.cost
+        th 
+          = ('%.2f' % @good.cost_usd.to_f + " $").html_safe
+          br
+          = ('%.2f' % @good.cost_eur.to_f + " &euro;").html_safe
+          br
+          = '%.2f' % @good.cost_byr.to_f + " Br"
       tr
         th = t('goods.show.created_at')
         th = @good.created_at.to_date
@@ -24,8 +29,9 @@ p
       - @good.photos.try(:each) do |photo|
         tr
           th = t('goods.show.photo')
-          th = photo.description
-          th = image_tag(photo.avatar.url(:medium))
+          th 
+            = photo.description
+            = image_tag(photo.avatar.url(:medium))
   .btn-group role="group" aria-label="Buttons"
     a.btn href=admin_goods_path 
       i.icon-chevron-left

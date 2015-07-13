@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709121423) do
+ActiveRecord::Schema.define(version: 20150713145732) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(version: 20150709121423) do
   end
 
   add_index "categories", ["category_id"], name: "index_categories_on_category_id"
+
+  create_table "currencies", force: true do |t|
+    t.decimal  "eur_to_usd", precision: 8, scale: 2, default: 0.0
+    t.decimal  "usd_to_byr", precision: 8, scale: 2, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "good_categories", force: true do |t|
     t.integer  "good_id"

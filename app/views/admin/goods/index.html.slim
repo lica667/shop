@@ -27,7 +27,12 @@ p
               th =link_to good.id, admin_good_path(good)
               th =image_tag(good.photos.first.avatar.url(:small)) unless good.photos.empty?
               th =good.name
-              th = '%.2f' % good.cost_usd.to_f
+              th 
+                = ('%.2f' % good.cost_usd.to_f + " $").html_safe
+                br
+                = ('%.2f' % good.cost_eur.to_f + " &euro;").html_safe
+                br
+                = '%.2f' % good.cost_byr.to_f + " Br"
               th 
                 -if !good.categories.empty?
                   -good.categories.each do |c|

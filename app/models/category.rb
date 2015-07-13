@@ -34,6 +34,19 @@ class Category < ActiveRecord::Base
     end
   end
 
+  def parent_ids(ids=nil)
+    ids ||= Array.new()
+    if self.category
+      ids << self.category_id
+      self.category.parent_ids(ids)
+    end
+    ids
+  end
+
+  def parents
+    Category.find(self.parent_ids)
+  end
+
   private
 
   def self.subcategories_with_breadcrumb(categories, path, hash)

@@ -1,7 +1,8 @@
-.container
+.container style="padding-top: 1em;"
   .col-md-3.pull-right
     h3 = current_admin.email
     a.btn href=destroy_admin_session_path data-method='delete'
       i.icon-off
       =" " + t('log_out')
   .col-md-6
+    = render 'currencies'
