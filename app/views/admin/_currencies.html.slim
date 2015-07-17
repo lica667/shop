@@ -1,11 +1,13 @@
 .page-container
   .well
-    = t('admin_index.currencies.title')
+    . 
+      = t('admin_index.currencies.title')
+      .pull-right#updated_currencies = 'Updated'
   .col-md-6
     .input-group
       span.input-group-addon = "EUR to USD"
-      <input class="form-control" type="number" step="0.01" id="currency_eur_to_usd" style=" font-size: 16px; text-align: right;" >
+      input.form-control.costs-input type="number" step="0.01" id="currency_eur_to_usd" style=" font-size: 16px; text-align: right;" 
     br
     .input-group
       span.input-group-addon = "USD to BYR"
-      <input class="form-control" type="number" step="100" id="currency_usd_to_byr" style=" font-size: 16px; text-align: right;" >
+      input.form-control.costs-input type="number" step="100" id="currency_usd_to_byr" style=" font-size: 16px; text-align: right;"

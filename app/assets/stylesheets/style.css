@@ -35,6 +35,19 @@ body
     background:#222;
 }
 
+#updated_currencies
+{
+	display: none;
+}
+
+div.input-group > .costs-input 
+{
+	 font-size: 16px; 
+	 text-align: right; 
+	 border-radius: 0px; 
+	 width: 5em;
+}
+
 .container
 {
 	/*padding:0px 30px 30px;*/

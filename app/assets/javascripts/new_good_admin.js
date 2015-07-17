@@ -1,41 +1,46 @@
 $(document).on('page:load', function() {
-  // if ($('h2').text('New good')){
-    // getCategoriesInput();
-  // };
+
+  // getCategoriesInput();
+  activateCurrencyRate();
 
 });
 
 $(window).load(function(){
 
-  // if ($('h2').text('New good')){
-    // getCategoriesInput();  
-  // };
+  // getCategoriesInput();  
+  activateCurrencyRate();
   
 });
 
+var $good_cost_usd
+var $good_cost_eur
+var $good_cost_byr
+
+function activateCurrencyRate () {
+  
+  if ($('good_cost_usd').length != 0) {
+    $good_cost_usd = $('#good_cost_usd').val();
+    $good_cost_eur = $('#good_cost_eur').val();
+    $good_cost_byr = $('#good_cost_byr').val();
+  };
+
+};
+
 function getCategoriesInput(){
 
+  if ($('h2').text() == "New good"){
+    $.getJSON('/categories.json', function(json){
 
-  $.getJSON('/categories.json', function(json){
-    console.log("JSON2");
-    console.log(json);
+      $('#input_categories').children().remove();
+      returnCategoriesTreeInput(json['categories'], 'input_categories');
 
-    // console.log(returnCategoriesTreeInput(json));
-    $('#input_categories').children().remove();
-    returnCategoriesTreeInput(json['categories'], 'input_categories');
-  });
-
+    });
+  };
 
 };
 
 function returnCategoriesTreeInput(categories, id){
   $.each( categories , function(index, value){
-    // $('#'+id).append("<li><a href = '/category?id="+value['id']+"'>" + value["name"] + "</a></li>")
-    // // console.log('id:' +id+ ' |name: ' + value["name"]);
-    // if (value['categories']) {
-    //   $('#'+id).append("<ul id="+value["id"]+"></ul>")
-    //   returnCategoriesTree(value['categories'], value["id"]);
-    // }
     appendElement(id, value);
     console.log('id:' +id+ ' |name: ' + value['name']);
   });
@@ -44,7 +49,6 @@ function returnCategoriesTreeInput(categories, id){
 function appendElement(id, value){
 
   $('#'+id).append("<div class='checkbox'><label class='choice' for='good_category_ids_"+value['id']+"'><input id='good_category_ids_"+value['id']+"' name='good[category_ids][]' type='checkbox' value='"+value['id']+"'>"+value['name']+"</input>"+"</label></div>")
-  // console.log('id:' +id+ ' |name: ' + value);
   if (value['categories']) {
     $('#'+id).append("<div id="+value["id"]+"></div>")
     returnCategoriesTreeInput(value['categories'], value["id"]);

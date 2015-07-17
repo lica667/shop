@@ -4,7 +4,16 @@
       = f.input :is_available, :label => ""
       = f.input :name
       = f.input :description, :as => :text, :input_html => { :rows => 10, :cols => 20 }
-      = f.input :cost_usd
+      = label_tag t('goods.form.cost')
+      .input-group
+        = number_field_tag 'good_cost_usd', @good.cost_usd, class: 'form-control costs-input', step:'0.01', name:'good[cost_usd]'
+        span.input-group-addon style="border-radius: 0px;" = ("&nbsp;$").html_safe
+      .input-group
+        = number_field_tag 'good_cost_eur', @good.cost_eur, class: 'form-control costs-input', step:'0.01', name:'good[cost_eur]'
+        span.input-group-addon style="border-radius: 0px;" = ("&nbsp;&euro;").html_safe
+      .input-group
+        = number_field_tag 'good_cost_byr', @good.cost_byr.to_i, class: 'form-control costs-input', step:'100', name:'good[cost_byr]'
+        span.input-group-addon style="border-radius: 0px;" = ("Br").html_safe
       = f.input :categories, :as => :check_boxes, :collection => collection
       h3 =t('photos.form.title') 
       = f.semantic_fields_for :photos do |photo|
