@@ -18,13 +18,67 @@ var $good_cost_byr
 
 function activateCurrencyRate () {
   
-  if ($('good_cost_usd').length != 0) {
+  if ($('#good_cost_usd').length != 0) {
     $good_cost_usd = $('#good_cost_usd').val();
     $good_cost_eur = $('#good_cost_eur').val();
     $good_cost_byr = $('#good_cost_byr').val();
+
+    $('#good_cost_usd').change(function(){
+      $good_cost_usd = $('#good_cost_usd').val();
+      $good_cost_eur = $('#good_cost_eur').val();
+      $good_cost_byr = $('#good_cost_byr').val();
+      $.getJSON('/admin/update_costs.json?token=usd&value='+$(this).val()+'', function(json){
+
+        $('#good_cost_eur').val(json['eur']);
+        $('#good_cost_byr').val(json['byr']);
+
+      });
+      undoAutoPasteCosts();
+    })
+
+    $('#good_cost_eur').change(function(){
+      $good_cost_usd = $('#good_cost_usd').val();
+      $good_cost_eur = $('#good_cost_eur').val();
+      $good_cost_byr = $('#good_cost_byr').val();
+      $.getJSON('/admin/update_costs.json?token=eur&value='+$(this).val()+'', function(json){
+
+        $('#good_cost_usd').val(json['usd']);
+        $('#good_cost_byr').val(json['byr']);
+
+      });
+      undoAutoPasteCosts();
+    })
+
+    $('#good_cost_byr').change(function(){
+      $good_cost_usd = $('#good_cost_usd').val();
+      $good_cost_eur = $('#good_cost_eur').val();
+      $good_cost_byr = $('#good_cost_byr').val();
+      $.getJSON('/admin/update_costs.json?token=byr&value='+$(this).val()+'', function(json){
+
+        $('#good_cost_eur').val(json['eur']);
+        $('#good_cost_usd').val(json['usd']);
+
+      });
+      undoAutoPasteCosts();
+    })
   };
 
 };
+
+function undoAutoPasteCosts (argument) {
+  $('#undo_auto_paste_costs').click(function() {
+    $('#good_cost_usd').val($good_cost_usd);
+    $('#good_cost_eur').val($good_cost_eur);
+    $('#good_cost_byr').val($good_cost_byr);
+  });
+  console.log('usd ' + $('#good_cost_usd').val() + ' ' + $good_cost_usd);
+  console.log('eur ' + $('#good_cost_eur').val() + ' ' + $good_cost_eur);
+  console.log('byr ' + $('#good_cost_byr').val() + ' ' + $good_cost_byr);
+}
+
+function AutoInsertCosts (body) {
+  console.log(body);
+}
 
 function getCategoriesInput(){
 

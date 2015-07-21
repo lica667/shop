@@ -26,6 +26,7 @@ en:
     back: "Back"
     edit: "Edit"
     delete: "Delete"
+    undo: "Undo"
   admin_index: 
     currencies:
       title: "Сurrency exchange"
