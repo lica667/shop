@@ -6,32 +6,29 @@
 //   });
 // });
 
-$(document).on('page:load', function() {
+// $(document).on('page:load', function() {
 
-  getCategories();
-  setSlides();
+//   getCategories();
+//   setSlides();
+//   setGoodCost();
 
-});
+// });
 
-$(window).load(function(){
+// $(window).load(function(){
 
-  getCategories();
-  setSlides();
+//   getCategories();
+//   setSlides();
+//   setGoodCost();
   
-});
+// });
 
-function getCategories(){
-
-
+function getCategories(){  
   $.getJSON('/categories.json', function(json){
-
-    // console.log(returnCategoriesTree(json));
     $('#categories').children().remove();
     returnCategoriesTree(json['categories'], 'categories');
   });
-
-
 };
+
 function setSlides(){
   $("#slides").slidesjs({
     width: 940,
@@ -40,20 +37,19 @@ function setSlides(){
   });
 };
 
-function returnCategoriesTree(categories, id){
-  // path = path || '|';
-  // el = $('#'+id);
-  // console.log(id);
-
-  // if (Array.isArray(categories)){
-    $.each( categories , function(index, value){
-      $('#'+id).append("<li><a href = '/category?id="+value['id']+"'>" + value["name"] + "</a></li>")
-      // console.log('id:' +id+ ' |name: ' + value["name"]);
-      if (value['categories']) {
-        $('#'+id).append("<ul id="+value["id"]+"></ul>")
-        returnCategoriesTree(value['categories'], value["id"]);
-      }
-    });
-  // }
-  // return categories['categories']
+function returnCategoriesTree(categories, id){  
+  $.each( categories , function(index, value){
+    $('#'+id).append("<li><a href = '/category?id="+value['id']+"'>" + value["name"] + "</a></li>")
+    // console.log('id:' +id+ ' |name: ' + value["name"]);
+    if (value['categories']) {
+      $('#'+id).append("<ul id="+value["id"]+"></ul>")
+      returnCategoriesTree(value['categories'], value["id"]);
+    }
+  });
 };
+
+function setGoodCost () {
+  $('.good_price').currency({
+    region: "USD"
+  });
+}

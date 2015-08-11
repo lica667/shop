@@ -22,4 +22,17 @@ class Good < ActiveRecord::Base
   def all_categories
     (self.categories.map(&:parent_ids) + self.category_ids).flatten.uniq
   end
+
+  def price(currency='usd')
+    case currency
+    when 'usd'
+      self.cost_usd.to_f
+    when 'eur'
+      self.cost_eur.to_f
+    when 'byr'
+      self.cost_byr.to_f
+    else
+      self.cost_usd.to_f
+    end
+  end
 end
