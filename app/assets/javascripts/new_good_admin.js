@@ -71,9 +71,6 @@ function undoAutoPasteCosts (argument) {
     $('#good_cost_eur').val($good_cost_eur);
     $('#good_cost_byr').val($good_cost_byr);
   });
-  console.log('usd ' + $('#good_cost_usd').val() + ' ' + $good_cost_usd);
-  console.log('eur ' + $('#good_cost_eur').val() + ' ' + $good_cost_eur);
-  console.log('byr ' + $('#good_cost_byr').val() + ' ' + $good_cost_byr);
 }
 
 function AutoInsertCosts (body) {
