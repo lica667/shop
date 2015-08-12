@@ -2,6 +2,9 @@ $(document).on('page:load', function() {
   
   getCurrencies();
   setCurrencies();
+  getCategories();
+  setSlides();
+  setCurrencyButtons();
 
 });
 
@@ -9,6 +12,9 @@ $(window).load(function(){
 
   getCurrencies();
   setCurrencies();
+  getCategories();
+  setSlides();
+  setCurrencyButtons();
   
 });
 
@@ -30,7 +36,6 @@ function setCurrencies () {
   if ( $( "#currency_eur_to_usd" ).length ) {
     $( "#currency_eur_to_usd" ).focusout(function(){ setCurrenciesJSON(); });
     $( "#currency_usd_to_byr" ).focusout(function(){ setCurrenciesJSON(); });
-    
   }
 };
 

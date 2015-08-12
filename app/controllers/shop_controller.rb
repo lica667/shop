@@ -20,4 +20,15 @@ class ShopController < ApplicationController
       format.json { render json: { categories: Category.category_presenter } }
     end
   end
+
+  def change_currency
+    if !params[:token].nil? && !params[:id].nil?
+      @good = Good.find_by(id: params[:id])
+      if @good
+        return render json: { status: :ok, cost: @good.price(params[:token]), id: params[:id] }
+      else
+        return render json: { status: :error, message: "No good with id" }
+      end
+    end
+  end
 end

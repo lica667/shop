@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/category', to: 'shop#category'
   get '/goods/:id', to: 'shop#show'
   get '/categories', to: 'shop#categories'
+  get '/change_currency', to: 'shop#change_currency'
   get 'admin/update_costs', to: 'admin#update_costs'
 
   resources :goods
