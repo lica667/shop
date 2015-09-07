@@ -23,13 +23,13 @@ class Good < ActiveRecord::Base
     (self.categories.map(&:parent_ids) + self.category_ids).flatten.uniq
   end
 
-  def price(currency='usd')
+  def price(currency='USD')
     case currency
-    when 'usd'
+    when 'USD'
       self.cost_usd.to_f
-    when 'eur'
+    when 'EUR'
       self.cost_eur.to_f
-    when 'byr'
+    when 'BY'
       self.cost_byr.to_f
     else
       self.cost_usd.to_f

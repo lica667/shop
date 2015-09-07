@@ -21,4 +21,4 @@
               a href=good_path(good) 
                 =good.name
             .price
-              p.good_price = good.price
+              p.good_price = good.price(cookies['currency'] || nil)

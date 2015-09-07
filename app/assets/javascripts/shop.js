@@ -25,19 +25,20 @@ function returnCategoriesTree(categories, id){
 };
 
 function setCurrencyButtons () {
-  $('.good_price').currency();
+  getCountryCode();
   $('#btn_usd').click(function(){
-    changeGoodCurrency('usd');
+    changeGoodCurrency('USD');
   });
   $('#btn_eur').click(function(){
-    changeGoodCurrency('eur');
+    changeGoodCurrency('EUR');
   });
   $('#btn_byr').click(function(){
-    changeGoodCurrency('byr');
+    changeGoodCurrency('BY');
   });  
 };
 
 function changeGoodCurrency (token) {
+  document.cookie = "currency = "+token
   $(".product").each(function(){
     $.getJSON('/change_currency?token='+token+'&id='+this.id, function(json){
       $('.product#'+json['id']).find('.good_price').text(json['cost']);
@@ -48,23 +49,23 @@ function changeGoodCurrency (token) {
 
 function setCurrency (token) {
   switch (token) {
-    case 'usd':
+    case 'USD':
       $('.good_price').currency({
         region: "USD",
         thousands: " ",
         decimals: 2
       });  
       break
-    case 'eur':
+    case 'EUR':
       $('.good_price').currency({
         region: "EUR",
         thousands: " ",
         decimals: 2
       });
       break
-    case 'byr':
+    case 'BY':
       $('.good_price').currency({
-        region: "BYR",
+        region: "BY",
         thousands: " ",
         decimals: 0
       });
@@ -74,6 +75,32 @@ function setCurrency (token) {
         region: "USD",
         thousands: " ",
         decimals: 2
-      }); 
+      });       
   }
 };
+
+function getCookie(name) {
+  var matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+function getCountryCode() {
+  if (!getCookie('currency')){
+    console.log("-----in ajax request----")
+    jQuery.ajax( { 
+      url: '//freegeoip.net/json/', 
+      type: 'POST', 
+      dataType: 'jsonp',
+      success: function(location) {
+        changeGoodCurrency(location.country_code)
+        console.log("-----in ajax request 2 ----")
+        console.log(location.country_code)
+      }
+    });
+  } else {
+    setCurrency(getCookie('currency'));
+    console.log("--------out ajax request--------")
+  }
+}

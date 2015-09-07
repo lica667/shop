@@ -1,14 +1,4 @@
-$(document).on('page:load', function() {
-  
-  getCurrencies();
-  setCurrencies();
-  getCategories();
-  setSlides();
-  setCurrencyButtons();
-
-});
-
-$(window).load(function(){
+jQuery(window).ready(function(){
 
   getCurrencies();
   setCurrencies();

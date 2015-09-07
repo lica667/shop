@@ -76,7 +76,8 @@
                 if (bc == 'AUD') currency_before = '$';
                 if (bc == 'BSD') currency_before = '$';
                 if (bc == 'BBD') currency_before = '$';
-                if (bc == 'BYR') currency_before = 'p.';
+                // modified BYR -> BY
+                if (bc == 'BY')  currency_after = ' p.';
                 if (bc == 'BZD') currency_before = 'BZ$';
                 if (bc == 'BMD') currency_before = '$';
                 if (bc == 'BOB') currency_before = '$b';
@@ -98,7 +99,7 @@
                 if (bc == 'EGP') currency_before = '&pound;';
                 if (bc == 'SVC') currency_before = '$';
                 if (bc == 'EEK') currency_before = 'kr';
-                if (bc == 'EUR') currency_before = '&euro;';
+                if (bc == 'EUR') currency_before = '&euro; ';
                 if (bc == 'FKP') currency_before = '&pound;';
                 if (bc == 'FJD') currency_before = '$';
                 if (bc == 'GBP') currency_before = '&pound;';
@@ -148,7 +149,7 @@
                 if (bc == 'TRL') currency_before = '&pound;';
                 if (bc == 'TVD') currency_before = '$';
                 if (bc == 'GBP') currency_before = '&pound;';
-                if (bc == 'USD') currency_before = '$';
+                if (bc == 'USD') currency_before = '$ ';
                 if (bc == 'UYU') currency_before = '$U';
                 if (bc == 'VEF') currency_before = 'Bs';
                 if (bc == 'ZWD') currency_before = 'Z$';
