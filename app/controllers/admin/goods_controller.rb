@@ -7,6 +7,7 @@ class Admin::GoodsController < AdminController
 
   def new
     @good = Good.new
+    @good.photos.new
   end
 
   def create
@@ -32,7 +33,7 @@ class Admin::GoodsController < AdminController
     respond_to do |format|
       if @good.update_attributes(good_params)
         format.html { redirect_to admin_goods_url, alert: t('controllers.goods.successfully_updated') }
-        format.json { render action: 'index', status: :created, location: @good }
+        format.json { render action: 'index', status: :updated, location: @good }
       else
         format.html { render action: 'new' }
         format.json { render json: @good.errors, status: :unprocessable_entity }

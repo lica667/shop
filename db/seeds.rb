@@ -5,4 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Currency.create(usd_to_eur: 1.3, usd_to_byr: 15000)
+
+Currency.create(eur_to_usd: 1.3, usd_to_byr: 18000)
+Admin.create(email:"admin@admin.com", password:"password")

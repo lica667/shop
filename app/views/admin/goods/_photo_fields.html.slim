@@ -1,5 +1,6 @@
-.nested-fields
+.nested-fields.photo_fields
+  a.remove_photo
+    i.icon-remove
   = f.inputs do
-    = f.input :avatar, :as => :file
+    = f.input :avatar, :as => :file, :label => false
     = f.input :description
-    = link_to_remove_association t('photos.form.remove_photo'), f

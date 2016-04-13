@@ -35,7 +35,6 @@ gem 'formtastic', '~> 3.0'
 gem 'formtastic-bootstrap'
 gem 'bootstrap-select-rails'
 gem "paperclip"
-gem "cocoon"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

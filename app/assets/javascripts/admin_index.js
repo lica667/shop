@@ -12,7 +12,7 @@ var $currency_eur_to_usd
 var $currency_usd_to_byr
 
 function getCurrencies () {
-  if ( $( "#currency_eur_to_usd" ).length ) {
+  if ( $( "#currency_eur_to_usd" ).length != 0 ) {
     $.getJSON('/admin.json?token=get_currencies', function(json){
       $currency_eur_to_usd = json['currency_eur_to_usd']
       $currency_usd_to_byr = json['currency_usd_to_byr']
@@ -30,7 +30,7 @@ function setCurrencies () {
 };
 
 function setCurrenciesJSON(){
-  if ( $( "#currency_eur_to_usd" ).length ) {
+  if ( $( "#currency_eur_to_usd" ).length != 0 ) {
     if ( ($currency_eur_to_usd != $( "#currency_eur_to_usd" ).val()) || ($currency_usd_to_byr != $( "#currency_usd_to_byr" ).val()) )
     $.getJSON('/admin.json?token=set_currencies&eur_to_usd='+
       $( "#currency_eur_to_usd" ).val()+

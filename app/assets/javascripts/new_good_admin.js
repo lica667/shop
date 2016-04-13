@@ -2,6 +2,7 @@ $(document).on('page:load', function() {
 
   // getCategoriesInput();
   activateCurrencyRate();
+  AddOrRemovePhotoFields();
 
 });
 
@@ -9,12 +10,14 @@ $(window).load(function(){
 
   // getCategoriesInput();  
   activateCurrencyRate();
+  AddOrRemovePhotoFields();
   
 });
 
 var $good_cost_usd
 var $good_cost_eur
 var $good_cost_byr
+var $photo_count = 1
 
 function activateCurrencyRate () {
   
@@ -103,6 +106,40 @@ function appendElement(id, value){
   if (value['categories']) {
     $('#'+id).append("<div id="+value["id"]+"></div>")
     returnCategoriesTreeInput(value['categories'], value["id"]);
+  }
+
+}
+
+function AddOrRemovePhotoFields() {
+
+  if ( $('#add_photo').length != 0){
+    $('#add_photo').click(function() {
+      $('.photo_fields').last().after("<div class='nested-fields photo_fields'>"+
+        "<a class='remove_photo'> <i class='icon-remove'/></a>"+
+        "<fieldset class='inputs'>"+
+          "<div class='file input optional form-group' id='good_photos_attributes_"+$photo_count+"_avatar_input'>"+
+            "<span class='form-wrapper'>"+
+              "<input id='good_photos_attributes_"+$photo_count+"_avatar' name='good[photos_attributes]["+$photo_count+"][avatar]' type='file' />"+
+            "</span>"+
+          "</div>"+
+          "<div class='string input optional stringish form-group' id='good_photos_attributes_"+$photo_count+"_description_input'>"+
+            "<span class='form-label'>"+
+              "<label class='control-label' for='good_photos_attributes_"+$photo_count+"_description'>Description</label>"+
+            "</span>"+
+            "<span class='form-wrapper'>"+
+              "<input class='form-control' id='good_photos_attributes_"+$photo_count+"_description' maxlength='255' name='good[photos_attributes]["+$photo_count+"][description]' type='text' />"+
+            "</span>"+
+          "</div>"+
+        "</fieldset>"+
+      "</div>")
+      $photo_count++;
+    });
+  }
+  if ( $('.remove_photo').length != 0){
+    $('body').on('click', '.remove_photo', (function(event) {
+      // $photo_count--;
+      $(this).parent().remove();
+    }));
   }
 
 }

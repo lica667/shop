@@ -40,6 +40,12 @@ body
   display: none;
 }
 
+.photo_fields
+{
+  border: 2px solid #FFFFFF;
+  padding: 5px;
+}
+
 div.input-group > .costs-input 
 {
    font-size: 16px; 
