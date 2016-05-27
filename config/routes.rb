@@ -17,11 +17,13 @@ Rails.application.routes.draw do
       end
     end
   end
-  get '/category', to: 'shop#category'
-  get '/goods/:id', to: 'shop#show'
-  get '/categories', to: 'shop#categories'
-  get '/change_currency', to: 'shop#change_currency'
+  get '/category',          to: 'shop#category'
+  get '/goods/:id',         to: 'shop#show'
+  get '/categories',        to: 'shop#categories'
+  get '/change_currency',   to: 'shop#change_currency'
   get 'admin/update_costs', to: 'admin#update_costs'
+  post '/add_to_cart',      to: 'shop#add_to_cart'
+
 
   resources :goods
   

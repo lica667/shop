@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title Shop
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    link href='//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css' rel='stylesheet'
+    script src='//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/jstree.min.js' 
+    = csrf_meta_tags 
+  body
+    .page-container
+      .header
+        nav.navbar.container
+          .navbar-header
+            a.navbar-brand href='/' 
+              img alt='Shop' src='/img/logo.png'
+              | Shop
+          .navbar-collapse.collapse.navbar-right
+            ul.nav.navbar-right.cart
+              li.dropdown
+                a href="cart.html" 
+                  / TODO implement cart.summarize
+                  span 10 205
+      .container
+        .row
+          = yield 

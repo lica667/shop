@@ -34,7 +34,9 @@ gem 'pry-rails'
 gem 'formtastic', '~> 3.0'
 gem 'formtastic-bootstrap'
 gem 'bootstrap-select-rails'
-gem "paperclip"
+gem 'paperclip'
+
+gem 'activerecord-session_store'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

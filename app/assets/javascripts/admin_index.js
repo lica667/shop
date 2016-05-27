@@ -1,12 +1,23 @@
-jQuery(window).ready(function(){
+$(function () {
 
   getCurrencies();
   setCurrencies();
   getCategories();
   setSlides();
   setCurrencyButtons();
+  addToCart();
   
 });
+
+$(document).on('page:load', function(){
+  getCurrencies();
+  setCurrencies();
+  getCategories();
+  setSlides();
+  setCurrencyButtons();
+  addToCart();
+
+})
 
 var $currency_eur_to_usd
 var $currency_usd_to_byr

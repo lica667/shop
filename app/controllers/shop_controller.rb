@@ -21,6 +21,12 @@ class ShopController < ApplicationController
     end
   end
 
+  def add_to_cart
+    respond_to do |format|
+      format.json { render json: { status: :ok } }
+    end
+  end
+
   def change_currency
     if !params[:token].nil? && !params[:id].nil?
       @good = Good.find_by(id: params[:id])

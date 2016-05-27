@@ -1,17 +1,25 @@
 .container
   .row
     .col-md-3.left-menu
-      .
+      div
         ul#categories
+      .options
+        .btn-group
+          button.btn.btn-default#btn_usd
+            = 'USD'
+          button.btn.btn-default#btn_eur
+            = 'EUR'
+          button.btn.btn-default#btn_byr
+            = 'BYR'
     .col-md-9
       .row
         -@goods.try(:each) do |good|
           .col-md-4
-            .product
+            .product id="#{good.id}"
               a href=good_path(good)
                 = image_tag (good.photos.first.avatar.url) unless good.photos.empty?
-            .name
-              a href=good_path(good) 
-                =good.name
-            .price
-              p = '%.2f' % good.cost.to_f
+              .name
+                a href=good_path(good) 
+                  =good.name
+              .price
+                p.good_price = good.price(cookies['currency'] || nil)

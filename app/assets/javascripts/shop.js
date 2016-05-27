@@ -104,3 +104,19 @@ function getCountryCode() {
     console.log("--------out ajax request--------")
   }
 }
+
+function addToCart(){
+  $(document).on('click', '#add_to_cart', function(){
+    var quantity = $(this.parentNode).find('input').val()
+    var id = $('.product-info').attr('id')
+    // debugger;
+    data = { 'id' : id, 'quantity': quantity }
+    $.ajax({
+      type: 'POST',
+      url: '/add_to_cart',
+      data: data,
+      // success: success,
+      dataType: 'json',
+    });
+  });
+}

@@ -1,4 +1,4 @@
-.row.product-info
+.row.product-info.product id="#{@good.id}"
   .col-md-6
           
     .image
@@ -6,23 +6,38 @@
 
     - if @good.photos.count > 1
       .image-additional
-        -@good.photos.each do |photo|
+        - @good.photos.each do |photo|
           a = image_tag (photo.avatar.url(:medium))
 
   .col-md-6
-    h1 =@good.name
+    h1 = @good.name
     .line
     ul
       li 
-        span Availability: In Stock
+        span Availability: 
+        | In Stock
     .price
-      Price 
-        strong = '$' + '%.2f' % @good.cost.to_f
-          
+      | Price 
+      strong.good_price = @good.price(cookies['currency'] || nil)
+    .line
+    form class='form-inline'
+      button.btn.btn-primary#add_to_cart type='button' = t ('buttons.add_to_cart_button')
+      label Qty:
+      input.col-md-1 type='text' value=1
     .tabs
       ul.nav.nav-tabs#myTab
         li.active
           a href="" Description
       .tab-content
         .tab-pane.active#home
-          = simple_format @good.description
+          = @good.description
+  .col-md-12
+    .pull-left
+      .options
+        .btn-group
+          button.btn.btn-default#btn_usd
+            = 'USD'
+          button.btn.btn-default#btn_eur
+            = 'EUR'
+          button.btn.btn-default#btn_byr
+            = 'BYR'

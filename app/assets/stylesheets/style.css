@@ -159,6 +159,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
   color:#fff;
   padding:12px 25px 10px;
   transition:all 0.4s ease 0s;
+  margin: 3px;
 }
 
 .btn-primary:hover
@@ -832,7 +833,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
   .dropdown-menu
   {
     margin:0px;
-    z-index:9999999;
+    z-index:1001;
     border-radius:0px;
   }
 
@@ -2061,6 +2062,7 @@ input[type="text"],label
    float:none;
    padding:6px 8px;
    border:1px solid #ddd;
+   margin: 3px;
 }
 .product-info b 
 {

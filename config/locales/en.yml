@@ -27,6 +27,7 @@ en:
     edit: "Edit"
     delete: "Delete"
     undo: "Undo"
+    add_to_cart_button: 'Add to Cart'
   admin_index: 
     currencies:
       title: "Сurrency exchange"
