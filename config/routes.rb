@@ -25,6 +25,12 @@ Rails.application.routes.draw do
   post '/add_to_cart',      to: 'shop#add_to_cart'
 
 
+  resources :cart, only: :index do 
+    patch :update, on: :collection
+  end
+
+  resources :cart_item, only: :destroy, defaults: { format: 'js' }
+
   resources :goods
   
   # The priority is based upon order of creation: first created -> highest priority.

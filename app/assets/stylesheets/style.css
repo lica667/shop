@@ -28,6 +28,10 @@
 /*-----------------------------------------------------------------------------------*/
 /*  Default styles
 /*-----------------------------------------------------------------------------------*/
+.good_remove{
+  cursor: pointer;
+}
+
 
 body
 {
@@ -1970,7 +1974,7 @@ input[type="text"],label
 {
   background:#fff;
   margin:0px;
-  margin-top:20px;
+  /*margin-top:20px;*/
 }
 
 .product-info .col-md-6:first-child
@@ -2265,6 +2269,10 @@ input[type="text"],label
 .cart-info tbody .quantity input[type="text"]
 {
    width:auto;
+}
+.cart-info tbody .quantity input[type="number"]
+{
+   width: 20%;
 }
 .cart-info tbody .quantity input[type="image"]
 {

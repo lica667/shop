@@ -1,6 +1,6 @@
-.row.product-info.product id="#{@good.id}"
+= render 'layouts/categories'
+.col-md-9.product-info.product id="#{@good.id}"
   .col-md-6
-          
     .image
       a = image_tag (@good.photos.first.avatar.url) unless @good.photos.empty?
 
@@ -31,13 +31,3 @@
       .tab-content
         .tab-pane.active#home
           = @good.description
-  .col-md-12
-    .pull-left
-      .options
-        .btn-group
-          button.btn.btn-default#btn_usd
-            = 'USD'
-          button.btn.btn-default#btn_eur
-            = 'EUR'
-          button.btn.btn-default#btn_byr
-            = 'BYR'

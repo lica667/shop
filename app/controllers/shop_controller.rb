@@ -22,8 +22,15 @@ class ShopController < ApplicationController
   end
 
   def add_to_cart
+    @current_user = Session.find_by(session_id: cookies['_shop_session'])
+    # we shoul sell only by BY currency :(
+    @cart = @current_user.cart || @current_user.build_cart(currency: 'BY')
     respond_to do |format|
-      format.json { render json: { status: :ok } }
+      if @cart.add_item!(cart_params)
+        format.json { render json: { status: :ok, cart_total: @cart.total } }
+      else
+        format.json { render json: { status: :failed } }
+      end
     end
   end
 
@@ -36,5 +43,10 @@ class ShopController < ApplicationController
         return render json: { status: :error, message: "No good with id" }
       end
     end
+  end
+
+  protected
+  def cart_params
+    params.permit(:good_id, :quantity)
   end
 end

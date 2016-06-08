@@ -1,0 +1,9 @@
+$('#' + '<%= @id %>').hide('slow', function(e) {
+  $('td.cart_total').text('<%= @cart_total %>');
+  $('span.cart_total')
+    .animate({"backgroundColor": "#4DEC97"}, 400)
+    .text('<%= @cart_total %>');
+  $('span.cart_total').animate({"backgroundColor": " #4DC7EC"}, 400);
+  $(this).remove();
+  $(document).trigger('initCartTotal');
+});
