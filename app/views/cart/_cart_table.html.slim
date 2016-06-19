@@ -1,45 +1,45 @@
 .row
-  .col-md-12
-    form.cart-info
-      table.table
-        thead
+  = semantic_form_for @cart, url: recalculate_cart_index_path do |f|
+    .col-md-12
+        table.table
+          thead
+            tr
+              th
+              th
+              th Price
+              th Quantity
+              th.total Total
+              th
+          tbody
+            = f.semantic_fields_for :cart_items do |item|
+              tr.product id=item.object.id
+                td.image
+                  = image_tag(item.object.good.photos.first.avatar.url(:medium)) unless item.object.good.photos.empty?
+                td.name
+                  = item.input :id, as: :hidden
+                  = link_to item.object.good.name, good_path(item.object.good)
+                td.cart_price = item.object.good.price(@cart.currency)
+
+                td.quantity
+                  = item.input :quantity, min: 1, step: 1, label: false, input_html: { class: 'input_quantity' }
+                td.total.cart_price value=item.object.total
+                  = item.object.total
+                td
+                  = link_to cart_item_path(item.object), method: :delete, class: 'good_remove', remote: true
+                    i.fa.fa-close.fa-2x
+    .col-sm-4.col-sm-offset-8
+      .cart-totals
+        table.table
           tr
             th
+            td
+              = f.actions do
+                = f.action :submit, :as => :button, button_html: { class: 'btn btn-primary' }, label: 'Recalculate'
+          tr
             th
-            th Price
-            th Quantity
-            th.total Total
-            th
-        tbody
-          - @cart.cart_items.each do |item|
-            tr.product id=item.id
-              td.image
-                = image_tag(item.good.photos.first.avatar.url(:medium)) unless item.good.photos.empty?
-              td.name
-                = link_to item.good.name, good_path(item.good)
-              td.cart_price = item.good.price(@cart.currency)
+              span Order Total
+            td.cart_price.cart_total value=@cart.total
+              = @cart.total
+        p
+          = f.submit_tag 'Proceed to Checkout', :as => :button, name: 'checkout', class: 'btn btn-primary btn-submit'
 
-              td.quantity
-                = number_field_tag 'quantity', item.quantity, min: 1, step: 1
-              td.total.cart_price value=item.total
-                = item.total
-              td
-                = link_to cart_item_path(item), method: :delete, class: 'good_remove', remote: true
-                  i.fa.fa-close.fa-2x
-.row
-  .col-sm-4.col-sm-offset-8
-    .cart-totals
-      table.table
-        tr
-          th
-          td
-            a.btn.btn-primary#recalculate
-              | Recalculate
-        tr
-          th
-            span Order Total
-          td.cart_price.cart_total value=@cart.total
-            = @cart.total
-      p
-        a.btn.btn-primary href="checkout.html" 
-          | Proceed to Checkout

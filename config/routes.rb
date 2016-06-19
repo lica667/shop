@@ -26,7 +26,8 @@ Rails.application.routes.draw do
 
 
   resources :cart, only: :index do 
-    patch :update, on: :collection
+    patch :recalculate, on: :collection
+    get :checkout, on: :collection
   end
 
   resources :cart_item, only: :destroy, defaults: { format: 'js' }

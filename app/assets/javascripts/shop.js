@@ -13,9 +13,12 @@ $(document).on('initUserJS', function(){
   addToCart();
   getCategories();
   setCurrencyButtons();
-  recalculate();
+  // recalculate();
+  // setResizeInput();
 
 });
+
+var $AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
 
 function getCurrency() {
   if (!getCookie('currency')){
@@ -130,8 +133,7 @@ function addToCart(){
   $('#add_to_cart').on('click', function(){
     var quantity = $(this.parentNode).find('input').val()
     var id = $('.product-info').attr('id')
-    var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
-    data = { 'good_id' : id, 'quantity': quantity, 'authenticity_token': AUTH_TOKEN }
+    data = { 'good_id' : id, 'quantity': quantity, 'authenticity_token': $AUTH_TOKEN }
     $.post('/add_to_cart', data, function(data){
       $('span.cart_total')
         .animate({"backgroundColor": "#4DEC97"}, 400)
@@ -150,15 +152,35 @@ function getCookie(name) {
 }
 
 function recalculate (argument) {
-  $('#recalculate').click(function () {
-  // $('input#quantity').focusout(function () {
-    debugger;
-    var form = $(this).closest('form');
+  $('#recalculate').on('click', function () {
+    var data = []
+    var form = $('form.cart-info');
+    $(form).find('tr.product').each(function() {
+      json = {'cart_item':{
+                'id': $(this).attr('id'), 
+                'quantity': $(this).find('#quantity').val()
+                }
+              };
+      data.push(json);
+    })
      $.ajax({
       type: 'PATCH',
       dataType: 'json',
-      url:  ,
-      data: form.serialize()
+      url:  '/cart/recalculate',
+      data: {'authenticity_token': $AUTH_TOKEN, 'data': data}
     });
   });
+}
+
+function setResizeInput(){
+  function resizeInput() {
+    debugger;
+      $(this).attr('size', $(this).val().length);
+  }
+
+  $('.input_quantity')
+      // event handler
+      .keyup(resizeInput)
+      // resize on page load
+      .each(resizeInput);
 }

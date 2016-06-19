@@ -2,6 +2,7 @@ class Cart < ActiveRecord::Base
   belongs_to :session
   has_many :cart_items
   accepts_nested_attributes_for :cart_items, allow_destroy: true
+  attr_accessor :checkout
 
   def add_item!(params)
     if item = cart_items.find_by(good_id: params[:good_id])

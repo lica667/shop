@@ -632,12 +632,14 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
   {
     margin:0px;
   }
-  
+  .input_quantity{
+    width: 20%;
+  }
   .cart
   {
-    display:inline-block;
+    /*display:inline-block;*/
     border-left:1px solid #eee;
-    float:right;
+    /*float:right;*/
     margin-right:0px;
     margin-top:4px;
     padding-left:5px;
@@ -651,9 +653,9 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
       }
   .cart a 
   {
-    color:#555;
+ /*   color:#555;
     font-weight:600;
-    font-size:12px;
+    font-size:12px;*/
   }
   .cart a:hover
   {
@@ -2389,6 +2391,10 @@ td.image img
 .cart-totals .btn
 {
    padding:12px 35px;
+}
+.cart-totals .btn-submit
+{
+  text-align:right;
 }
 
 
