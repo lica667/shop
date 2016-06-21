@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_uniqueness_of :email
-
+  
+  has_many :addresses
+  has_many :carts
+  
   attr_accessor :temp_password
   before_update :update_user
 

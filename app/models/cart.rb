@@ -1,7 +1,11 @@
 class Cart < ActiveRecord::Base
   belongs_to :session
+  belongs_to :user
   has_many :cart_items
+  has_one :address
   accepts_nested_attributes_for :cart_items, allow_destroy: true
+  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :user
   attr_accessor :checkout
 
   def add_item!(params)

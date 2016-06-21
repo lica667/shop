@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post '/add_to_cart',      to: 'shop#add_to_cart'
 
 
-  resources :cart, only: :index do 
+  resources :cart, only: [:index, :update] do 
     patch :recalculate, on: :collection
     get :checkout, on: :collection
   end

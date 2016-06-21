@@ -3,7 +3,6 @@ class CartController < ApplicationController
   end
 
   def recalculate
-    binding.pry
     @cart.assign_attributes(cart_params)
     if @cart.save
       redirect_to checkout_cart_index_url and return if params[:checkout]
@@ -11,13 +10,14 @@ class CartController < ApplicationController
     else
       redirect_to cart_index_url
     end
-    # respond_to do |format|
-    #   format.js { render 'recalculate' } 
-    # end
   end
 
   def checkout
     
+  end
+
+  def update
+    binding.pry
   end
 
   protected
