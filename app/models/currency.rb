@@ -5,7 +5,7 @@ class Currency < ActiveRecord::Base
   def update_goods_costs
     Good.all.each{ |good| good.update_attributes(
       cost_usd: (good.cost_eur * Currency.first.eur_to_usd).round(2),
-      cost_byr: (good.cost_eur * Currency.first.eur_to_usd * Currency.first.usd_to_byr).round(-3))
+      cost_byn: (good.cost_eur * Currency.first.eur_to_usd * Currency.first.usd_to_byn).round(2))
     }
   end
 

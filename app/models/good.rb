@@ -1,8 +1,8 @@
 class Good < ActiveRecord::Base
-  validates_presence_of :cost_usd#, :cost_eur, :cost_byr
+  validates_presence_of :cost_usd#, :cost_eur, :cost_byn
   validates :cost_usd, numericality: { greater_than_or_equal_to: 0.01, message: "Can't believe in this cost" }
   # validates :cost_eur, numericality: { greater_than_or_equal_to: 0.01, message: "Can't believe in this cost" }
-  # validates :cost_byr, numericality: { greater_than_or_equal_to: 0.01, message: "Can't believe in this cost" }
+  # validates :cost_byn, numericality: { greater_than_or_equal_to: 0.01, message: "Can't believe in this cost" }
   validates_presence_of :name
   validates_presence_of :description
 
@@ -31,7 +31,7 @@ class Good < ActiveRecord::Base
     when 'EUR'
       self.cost_eur.to_f
     when 'BY'
-      self.cost_byr.to_f
+      self.cost_byn.to_f
     else
       self.cost_usd.to_f
     end

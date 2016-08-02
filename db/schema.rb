@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619141341) do
+ActiveRecord::Schema.define(version: 20160718114903) do
 
   create_table "addresses", force: true do |t|
     t.string   "address"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20160619141341) do
 
   create_table "currencies", force: true do |t|
     t.decimal  "eur_to_usd", precision: 8, scale: 2, default: 0.0
-    t.decimal  "usd_to_byr", precision: 8, scale: 2, default: 0.0
+    t.decimal  "usd_to_byn", precision: 8, scale: 2, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20160619141341) do
     t.datetime "updated_at"
     t.boolean  "is_available",                         default: true
     t.decimal  "cost_eur",     precision: 8, scale: 2, default: 0.0
-    t.decimal  "cost_byr",     precision: 8, scale: 2, default: 0.0
+    t.decimal  "cost_byn",     precision: 8, scale: 2, default: 0.0
   end
 
   create_table "photos", force: true do |t|

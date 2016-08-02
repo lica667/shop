@@ -76,7 +76,7 @@
                 if (bc == 'AUD') currency_before = '$';
                 if (bc == 'BSD') currency_before = '$';
                 if (bc == 'BBD') currency_before = '$';
-                // modified BYR -> BY
+                // modified BYN -> BY
                 if (bc == 'BY')  currency_after = ' p.';
                 if (bc == 'BZD') currency_before = 'BZ$';
                 if (bc == 'BMD') currency_before = '$';

@@ -19,7 +19,7 @@ p
           br
           = ('%.2f' % @good.cost_eur.to_f + " &euro;").html_safe
           br
-          = '%.2f' % @good.cost_byr.to_f + " Br"
+          = '%.2f' % @good.cost_byn.to_f + " Br"
       tr
         th = t('goods.show.created_at')
         th = @good.created_at.to_date

@@ -15,7 +15,7 @@
         = number_field_tag 'good_cost_eur', @good.cost_eur, class: 'form-control costs-input', step:'0.01', name:'good[cost_eur]'
         span.input-group-addon style="border-radius: 0px;" = ("&nbsp;&euro;").html_safe
       .input-group
-        = number_field_tag 'good_cost_byr', @good.cost_byr.to_i, class: 'form-control costs-input', step:'100', name:'good[cost_byr]'
+        = number_field_tag 'good_cost_byn', @good.cost_byn, class: 'form-control costs-input', step:'100', name:'good[cost_byn]'
         span.input-group-addon style="border-radius: 0px;" = ("Br").html_safe
       = f.input :categories, :as => :check_boxes, :collection => collection
       h3 =t('photos.form.title') 

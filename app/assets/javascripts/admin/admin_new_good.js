@@ -1,6 +1,6 @@
 var $good_cost_usd
 var $good_cost_eur
-var $good_cost_byr
+var $good_cost_byn
 var $photo_count = 1
 
 // change costs with all currencies
@@ -9,16 +9,16 @@ function activateCurrencyRate () {
   if ($('#good_cost_usd').length != 0) {
     $good_cost_usd = $('#good_cost_usd').val();
     $good_cost_eur = $('#good_cost_eur').val();
-    $good_cost_byr = $('#good_cost_byr').val();
+    $good_cost_byn = $('#good_cost_byn').val();
 
     $('#good_cost_usd').change(function(){
       $good_cost_usd = $('#good_cost_usd').val();
       $good_cost_eur = $('#good_cost_eur').val();
-      $good_cost_byr = $('#good_cost_byr').val();
+      $good_cost_byn = $('#good_cost_byn').val();
       $.getJSON('/admin/update_costs.json?token=usd&value='+$(this).val()+'', function(json){
 
         $('#good_cost_eur').val(json['eur']);
-        $('#good_cost_byr').val(json['byr']);
+        $('#good_cost_byn').val(json['byn']);
 
       });
       undoAutoPasteCosts();
@@ -27,21 +27,21 @@ function activateCurrencyRate () {
     $('#good_cost_eur').change(function(){
       $good_cost_usd = $('#good_cost_usd').val();
       $good_cost_eur = $('#good_cost_eur').val();
-      $good_cost_byr = $('#good_cost_byr').val();
+      $good_cost_byn = $('#good_cost_byn').val();
       $.getJSON('/admin/update_costs.json?token=eur&value='+$(this).val()+'', function(json){
 
         $('#good_cost_usd').val(json['usd']);
-        $('#good_cost_byr').val(json['byr']);
+        $('#good_cost_byn').val(json['byn']);
 
       });
       undoAutoPasteCosts();
     })
 
-    $('#good_cost_byr').change(function(){
+    $('#good_cost_byn').change(function(){
       $good_cost_usd = $('#good_cost_usd').val();
       $good_cost_eur = $('#good_cost_eur').val();
-      $good_cost_byr = $('#good_cost_byr').val();
-      $.getJSON('/admin/update_costs.json?token=byr&value='+$(this).val()+'', function(json){
+      $good_cost_byn = $('#good_cost_byn').val();
+      $.getJSON('/admin/update_costs.json?token=byn&value='+$(this).val()+'', function(json){
 
         $('#good_cost_eur').val(json['eur']);
         $('#good_cost_usd').val(json['usd']);
@@ -57,7 +57,7 @@ function undoAutoPasteCosts (argument) {
   $('#undo_auto_paste_costs').click(function() {
     $('#good_cost_usd').val($good_cost_usd);
     $('#good_cost_eur').val($good_cost_eur);
-    $('#good_cost_byr').val($good_cost_byr);
+    $('#good_cost_byn').val($good_cost_byn);
   });
 }
 

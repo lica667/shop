@@ -2,8 +2,8 @@
 
 one:
   usd_to_eur: MyString
-  usd_to_byr: MyString
+  usd_to_byn: MyString
 
 two:
   usd_to_eur: MyString
-  usd_to_byr: MyString
+  usd_to_byn: MyString
