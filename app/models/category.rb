@@ -13,7 +13,7 @@ class Category < ActiveRecord::Base
   def self.category_presenter
     root_categories = Array.new()
     Category.root.each { |c| root_categories <<  CategoryPresenter.new(c).present }
-    root_categories
+    root_categories.join
   end
 
   def self.all_with_parents

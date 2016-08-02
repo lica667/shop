@@ -1,8 +1,8 @@
 $(function () {
   $(document).trigger('initUserJS');
 });
-
 $(document).on('page:load', function() {
+// $(document).ready(function() {
   $(document).trigger('initUserJS');
 });
 
@@ -13,12 +13,24 @@ $(document).on('initUserJS', function(){
   addToCart();
   getCategories();
   setCurrencyButtons();
+  initMatchHeight();
   // recalculate();
   // setResizeInput();
 
 });
 
 var $AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
+var $good
+
+function initMatchHeight() {
+  options = {
+    byRow: true,
+    property: 'height',
+    target: null,
+    remove: false
+  }
+  $('.matchHeight').matchHeight(options);
+}
 
 function getCurrency() {
   if (!getCookie('currency')){
@@ -39,7 +51,8 @@ function getCurrency() {
 function getCategories(){  
   $.getJSON('/categories.json', function(json){
     $('#categories').children().remove();
-    returnCategoriesTree(json['categories'], 'categories');
+    $('#categories').append(json['categories'])
+    // returnCategoriesTree(json['categories'], 'categories');
   });
 };
 
@@ -55,8 +68,8 @@ function returnCategoriesTree(categories, id){
   $.each( categories , function(index, value){
     $('#'+id).append("<li><a href = '/category?id="+value['id']+"'>" + value["name"] + "</a></li>")
     if (value['categories']) {
-      $('#'+id).append("<ul id="+value["id"]+"></ul>")
-      returnCategoriesTree(value['categories'], value["id"]);
+      $('#'+id).append("<ul id=#category_"+value["id"]+"></ul>")
+      returnCategoriesTree(value['categories'], 'category_' + value["id"]);
     }
   });
 };
@@ -68,7 +81,7 @@ function setCurrencyButtons () {
   $('#btn_eur').click(function(){
     changeGoodCurrency('EUR');
   });
-  $('#btn_byr').click(function(){
+  $('#btn_byn').click(function(){
     changeGoodCurrency('BY');
   });  
 };
@@ -103,7 +116,7 @@ function setCurrency (token) {
       $('.good_price').currency({
         region: "BY",
         thousands: " ",
-        decimals: 0
+        decimals: 2
       });
       break
     default:
@@ -119,7 +132,7 @@ function setShopCurrency () {
   $('.cart_price').currency({
     region: "BY",
     thousands: " ",
-    decimals: 0
+    decimals: 2
   });
 }
 
@@ -174,7 +187,6 @@ function recalculate (argument) {
 
 function setResizeInput(){
   function resizeInput() {
-    debugger;
       $(this).attr('size', $(this).val().length);
   }
 

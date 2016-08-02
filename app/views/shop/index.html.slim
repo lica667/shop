@@ -4,7 +4,7 @@
     -@goods.try(:each) do |good|
       .col-md-4
         .product id="#{good.id}"
-          a href=good_path(good)
+          a.matchHeight href=good_path(good)
             = image_tag (good.photos.first.avatar.url) unless good.photos.empty?
           .name
             a href=good_path(good) 

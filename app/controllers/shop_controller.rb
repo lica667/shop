@@ -4,11 +4,8 @@ class ShopController < ApplicationController
   end
 
   def category
-  	if params[:id]
-  		@goods = Category.find_by(id: params[:id]).goods
-  	else
-  		@goods = Good.all
-  	end
+  	@goods = params[:id] ? Category.find_by(id: params[:id]).goods : @goods = Good.all
+    render 'index'
   end
 
   def show
