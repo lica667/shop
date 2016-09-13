@@ -17,7 +17,6 @@ class CartController < ApplicationController
   end
 
   def update
-    binding.pry
   end
 
   protected

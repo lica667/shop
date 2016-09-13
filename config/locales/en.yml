@@ -22,6 +22,7 @@
 en:
   hello: "Hello world"
   log_out: "Log out"
+  home: 'Home'
   buttons:
     back: "Back"
     edit: "Edit"

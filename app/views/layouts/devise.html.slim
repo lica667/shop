@@ -1,0 +1,27 @@
+html
+  head
+    title
+      | Shop
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    .page-container
+      = render partial: params[:controller] =~ /users/ ? 'partials/users_header' : 'partials/admin_header'
+      .container-fluid
+        - if notice
+          .alert.alert-danger.alert-dismissible[role="alert"]
+            button.close[type="button" data-dismiss="alert" aria-label="Close"]
+              span[aria-hidden="true"]
+                | ×
+            p.notice
+              = notice
+        - elsif alert
+          .alert.alert-success.alert-dismissible[role="alert"]
+            button.close[type="button" data-dismiss="alert" aria-label="Close"]
+              span[aria-hidden="true"]
+                | ×
+            p.alert
+              = alert
+      .container
+        = yield

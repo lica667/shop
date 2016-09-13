@@ -1,0 +1,57 @@
+.row
+  .col-md-12
+    .breadcrumbs
+      ul.breadcrumb
+        li
+          = link_to t('home'), root_url
+          span.divider
+        li.active My Account
+.row
+  .col-md-12
+    h2 My Account
+.row
+  .col-md-6
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'loginbox form-horizontal' }) do |f|
+      p Login
+      .form-group
+        = f.label :email, class: 'control-label col-md-4'
+        .col-md-8
+          = f.email_field :email, autofocus: true, class: 'form-control'
+      .form-group
+        = f.label :password, class: 'control-label col-md-4'
+        .col-md-8
+          = f.password_field :password, autocomplete: "off", class: 'form-control'
+      .form-group.actions
+        .col-md-12
+          = f.submit "Log in", class: 'btn btn-primary'
+          = link_to "Lost Password?", new_password_path(resource_name)
+  .col-md-6
+    form.loginbox.form-horizontal
+      p Register
+      .form-group
+        label.control-label.col-md-4 for="inputEmail" 
+          | Username
+          span.required *
+        .col-md-8
+          input.form-control type="text" /
+      .form-group
+        label.control-label.col-md-4 for="inputPassword" 
+          | Password
+          span.required *
+        .col-md-8
+          input.form-control type="password" /
+      .form-group
+        label.control-label.col-md-4 for="inputEmail" 
+          | Email
+          span.required *
+        .col-md-8
+          input#inputEmail.form-control type="text" /
+      .form-group
+        label.control-label.col-md-4 for="inputPassword" 
+          | Re-enter password
+          span.required *
+        .col-md-8
+          input#inputPassword.form-control type="password" /
+      .form-group
+        .col-md-12
+          button.btn.btn-primary type="button"  Register

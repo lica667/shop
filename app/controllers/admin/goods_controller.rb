@@ -35,7 +35,7 @@ class Admin::GoodsController < AdminController
         format.html { redirect_to admin_goods_url, alert: t('controllers.goods.successfully_updated') }
         format.json { render action: 'index', status: :updated, location: @good }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'edit' }
         format.json { render json: @good.errors, status: :unprocessable_entity }
       end
     end

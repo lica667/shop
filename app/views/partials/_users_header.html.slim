@@ -1,0 +1,20 @@
+.header
+  nav.navbar.container
+    .navbar-header
+      a.navbar-brand href='/' 
+        img alt='Shop' src='/img/logo.png'
+        | Shop
+    .navbar-collapse.collapse.navbar-right
+      ul.nav.navbar-nav
+        - if current_user
+          li.active
+            = link_to current_user.email, user_path(current_user)
+        - else
+          li.active
+            = link_to "Login/Register", new_user_session_path
+      ul.nav.navbar-right.cart
+        li.dropdown
+          a href=cart_index_path
+            - if @cart
+              span.cart_total.cart_price value=@cart.total
+                = @cart.total

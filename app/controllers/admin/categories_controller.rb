@@ -39,7 +39,7 @@ class Admin::CategoriesController < AdminController
         format.html { redirect_to admin_categories_url, alert: t('controllers.categories.successfully_updated') }
         format.json { render action: 'index', status: :created, location: @category }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'edit' }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end

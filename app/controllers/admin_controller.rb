@@ -38,8 +38,8 @@ class AdminController < ApplicationController
   end
 
   private
-    def currencies_params
-      params.permit(:eur_to_usd, :usd_to_byn)
-    end
+  def currencies_params
+    params.permit(:eur_to_usd, :usd_to_byn)
+  end
   
 end
