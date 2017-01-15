@@ -1,0 +1,7 @@
+= render 'partials/account_sidebar'
+.col-md-9.product
+  - if @addresses.empty?
+    .no-records
+      h1 = t('no_records')
+  - else
+    = render 'addresses/list'

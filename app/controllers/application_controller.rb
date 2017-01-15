@@ -6,12 +6,7 @@ class ApplicationController < ActionController::Base
   
   protected
   def set_cart
-    current_user = Session.find_by(session_id: cookies['_shop_session'])
-    @cart = 
-      if current_user
-        current_user.cart || current_user.build_cart(currency:'BY')
-      else
-        Cart.new(currency:'BY')
-      end
+    current_user ||= Session.find_by(session_id: session.id)
+    @cart = current_user&.cart || current_user&.build_cart(currency:'BY') || Cart.new(currency: 'BY')
   end
 end

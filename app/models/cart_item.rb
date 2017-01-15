@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: cart_items
+#
+#  id       :integer          not null, primary key
+#  cart_id  :integer
+#  good_id  :integer
+#  quantity :integer
+#
+
 class CartItem < ActiveRecord::Base
 	belongs_to :cart
 	belongs_to :good

@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Shop
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'admin/admin_application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    .navbar.navbar-default.navbar-static-top
+      .container
+        = link_to "Shop", admin_index_path, html_options = {class:"navbar-brand"}
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          ul.nav.navbar-nav
+            li= link_to t('goods.index.title'), admin_goods_path
+            li= link_to t('categories.index.title'), admin_categories_path
+            li= link_to t('users.index.title'), admin_users_path
+            li= link_to t('orders.index.title'), admin_orders_path
+    /! show alert or notice
+    .container-fluid
+      - if notice
+        .alert.alert-danger.alert-dismissible role="alert" 
+          button.close aria-label="Close" data-dismiss="alert" type="button" 
+            span aria-hidden="true"  ×
+          p.notice= notice
+      - elsif alert
+        .alert.alert-success.alert-dismissible role="alert" 
+          button.close aria-label="Close" data-dismiss="alert" type="button" 
+            span aria-hidden="true"  ×
+          p.alert= alert
+    = yield

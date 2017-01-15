@@ -1,0 +1,8 @@
+tr
+  td = order.id
+  td
+    - order.cart_items.each do |item|
+      span = "#{item.good.name} X #{item.quantity}"
+      br
+  td = Order.human_attribute_name(order.status)
+  td = order.total

@@ -1,9 +1,10 @@
 .col-md-6.col-md-offset-3
   .row
     h2 Checkout
-    p.well
-      | Already registered?
-      a href="http://www.nicolette.ro/sapphire-html/account.html"  Click here to login
+    - unless current_user.is_a? User
+      p.well
+        | Already registered?
+        a href="http://www.nicolette.ro/sapphire-html/account.html"  Click here to login
   .row
     .your_order
       h3 Your order
@@ -27,42 +28,43 @@
             td.cart_price = @cart.total
   .row
     h3 Address
-    = semantic_form_for @cart, :html => { class: 'form-horizontal' }  do |f|
+    = semantic_form_for @cart, url: cart_order_path(@cart), :html => { class: 'form-horizontal' }  do |f|
       = semantic_fields_for :user do |u|
         .form-group
           label.col-md-3.control-label 
             | Name
             span.required *
           .col-md-9
-            = u.input :name, label: false, input_html: { placeholder: ('Name') }
+            = u.input :name, label: false, input_html: { placeholder: ('Name'), value: current_user&.name }
         .form-group
           label.col-md-3.control-label 
             | Email Address
             span.required *
           .col-md-9
-            = u.input :email, label: false, input_html: { placeholder: ('Email Address') }
+            = u.input :email, label: false, input_html: { placeholder: ('Email Address'), value: current_user&.email }
         .form-group
           label.col-md-3.control-label 
             | Phone
             span.required *
           .col-md-9
-            = u.input :phone, label: false, input_html: { placeholder: ('Phone') }
+            = u.input :phone, label: false, input_html: { placeholder: ('Phone'), value: current_user&.phone }
       = semantic_fields_for :address do |addr|
         .form-group
           label.col-md-3.control-label 
             | Address
             span.required *
           .col-md-9
-            = addr.input :address, label: false, input_html: { placeholder: ('Address') }
+            = addr.input :address, label: false, input_html: { placeholder: ('Address'), value: current_user&.addresses&.first&.address }
         .form-group
           label.col-md-3.control-label 
             | City
             span.required *
           .col-md-9
-            = addr.input :city, label: false, input_html: { placeholder: ('City') }
-        .form-group
-          .col-md-9
-            label
-              | After entering, we create an account for you
+            = addr.input :city, label: false, input_html: { placeholder: ('City'), value: current_user&.addresses&.first&.city }
+        - unless current_user.is_a? User
+          .form-group
+            .col-md-9
+              label
+                | After entering, we create an account for you
       = f.actions do
         = f.action :submit, as: :button, button_html: { class: 'btn btn-primary pull-right' }, label: 'Place Order'

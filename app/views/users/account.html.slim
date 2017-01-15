@@ -1,0 +1,16 @@
+= render 'partials/account_sidebar'
+.col-md-9.product
+  .col-md-4
+    br
+    blockquote
+      .row
+        .pull-left = t('.email')
+        .pull-right = current_user.email
+      .row
+        .pull-left = t('.name')
+        .pull-right = current_user.name
+      .row
+        .pull-left = t('.phone')
+        .pull-right = current_user.phone
+  .change-profile
+    .pull-right.btn.btn-default = link_to t('.change_btn'), users_change_account_path

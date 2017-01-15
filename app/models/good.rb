@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: goods
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  description  :string(255)
+#  cost_usd     :decimal(8, 2)    default(0.0)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  is_available :boolean          default(TRUE)
+#  cost_eur     :decimal(8, 2)    default(0.0)
+#  cost_byn     :decimal(8, 2)    default(0.0)
+#
+
 class Good < ActiveRecord::Base
   validates_presence_of :cost_usd#, :cost_eur, :cost_byn
   validates :cost_usd, numericality: { greater_than_or_equal_to: 0.01, message: "Can't believe in this cost" }

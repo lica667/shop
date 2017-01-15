@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :admin, only: :index
   namespace :admin do
     resources :goods
+    resources :orders, only: :index do
+      get :change_state
+    end
     resources :categories
     resources :users do
       collection do
@@ -29,11 +32,18 @@ Rails.application.routes.draw do
   resources :cart, only: [:index, :update] do 
     patch :recalculate, on: :collection
     get :checkout, on: :collection
+    patch :order
   end
 
   resources :cart_item, only: :destroy, defaults: { format: 'js' }
 
   resources :goods
-  resources :users
+  namespace :users do
+    get :account
+    get :addresses
+    get :orders
+    get :change_account
+    patch :update_account
+  end
   
 end

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  category_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Category < ActiveRecord::Base
   require 'category_presenter'
   

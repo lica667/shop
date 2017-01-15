@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: currencies
+#
+#  id         :integer          not null, primary key
+#  eur_to_usd :decimal(8, 2)    default(0.0)
+#  usd_to_byn :decimal(8, 2)    default(0.0)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Currency < ActiveRecord::Base
 
   after_update :update_goods_costs

@@ -28,6 +28,15 @@
 /*-----------------------------------------------------------------------------------*/
 /*  Default styles
 /*-----------------------------------------------------------------------------------*/
+.no-records {
+  padding: 40px;
+  color: #a7a7a7;
+}
+
+.change-profile{
+  padding-top: 10px;
+}
+
 .good_remove{
   cursor: pointer;
 }
@@ -1081,19 +1090,6 @@ ul.slides
     margin-bottom:20px;
 }
 
-/*
-.banners
-{
-  margin-bottom:30px;
-}
-
-.banners .banner
-{
-  height:100px;
-  background:#fff;
-}
-*/
-
 .heading
 {
     display:none;
@@ -1105,6 +1101,7 @@ ul.slides
    margin-bottom:20px;
    padding-bottom:10px;
    text-align:center; 
+   min-height: 160px;
 }
 .product > a
 {

@@ -1,0 +1,6 @@
+.col-md-3.left-menu
+  div
+    ul.nav.nav-list
+      = active_link_to(t('.account'), users_account_path, :active => :exclusive, :wrap_tag => :li)
+      = active_link_to(t('.addresses'), users_addresses_path, :active => :exclusive, :wrap_tag => :li)
+      = active_link_to(t('.orders'), users_orders_path, :active => :exclusive, :wrap_tag => :li)

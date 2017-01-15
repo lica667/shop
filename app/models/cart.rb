@@ -1,9 +1,22 @@
+# == Schema Information
+#
+# Table name: carts
+#
+#  id         :integer          not null, primary key
+#  session_id :integer
+#  currency   :string(255)
+#  status     :string(255)
+#  address_id :integer
+#  user_id    :integer
+#
+
 class Cart < ActiveRecord::Base
   belongs_to :session
   belongs_to :user
+  belongs_to :order
   has_many :cart_items
   has_one :address
-  accepts_nested_attributes_for :cart_items, allow_destroy: true
+  accepts_nested_attributes_for :cart_items
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :user
   attr_accessor :checkout

@@ -1,0 +1,32 @@
+p
+.container
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading
+          .row
+            .col-md-6 = t('.title')
+      table.table.table-hover
+        thead
+          tr
+            th = t('.id')
+            th = t('.products')
+            th = t('.status')
+            th = t('.user')
+            th = t('.actions')
+        tbody
+          -@orders.each do |order|
+            tr
+              td = order.id
+              td
+                - order.cart_items.each do |item|
+                  span = "#{item.good.name} X #{item.quantity}"
+                  br
+              td = Order.human_attribute_name(order.status)
+              td = order.user.name
+              th 
+                - unless order.done?
+                  - Order.statuses.each do |k, v|
+                    a.btn *{disabled:('disabled' if order.status == k)} href= admin_order_change_state_path(order, status: k)
+                      = Order.human_attribute_name(k)
+                    | &nbsp;

@@ -23,6 +23,7 @@ en:
   hello: "Hello world"
   log_out: "Log out"
   home: 'Home'
+  no_records: 'No Records'
   buttons:
     back: "Back"
     edit: "Edit"
@@ -32,6 +33,12 @@ en:
   admin_index: 
     currencies:
       title: "Сurrency exchange"
+  layouts:
+    application:
+      account: 'Account'
+  orders:
+    index:
+      title: 'Orders'
   goods:
     index:
       title: "Goods"
@@ -83,6 +90,16 @@ en:
       email: "Email:"
     form:
       edit: "Edit user"
+    account:
+      email: 'E-mail: '
+      name: 'Name: '
+      phone: 'Phone: '
+      change_btn: 'Change Profile'
+      addresses: 'Addresses'
+      purchases: 'Purchases'
+    change_account:
+      name: 'Name'
+      phone: 'Phone'
   photos:
     form:
       title: "Photos"
