@@ -6,6 +6,7 @@
 #  cart_id  :integer
 #  good_id  :integer
 #  quantity :integer
+#  order_id :integer
 #
 
 class CartItem < ActiveRecord::Base

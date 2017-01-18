@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   protected
   def set_cart
     current_user ||= Session.find_by(session_id: session.id)
-    @cart = current_user&.cart || current_user&.build_cart(currency:'BY') || Cart.new(currency: 'BY')
+    @cart = current_user.try(:cart) || current_user.build_cart(currency:'BY')
   end
 end

@@ -8,6 +8,10 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #
+# Indexes
+#
+#  index_categories_on_category_id  (category_id)
+#
 
 class Category < ActiveRecord::Base
   require 'category_presenter'
